@@ -35,6 +35,7 @@ import json_numpy
 json_numpy.patch()
 import json
 import logging
+import time
 import traceback
 from dataclasses import dataclass
 from pathlib import Path
@@ -53,6 +54,8 @@ SYSTEM_PROMPT = (
     "A chat between a curious user and an artificial intelligence assistant. "
     "The assistant gives helpful, detailed, and polite answers to the user's questions."
 )
+
+get_time = time.perf_counter
 
 
 def get_openvla_prompt(instruction: str, openvla_path: Union[str, Path]) -> str:

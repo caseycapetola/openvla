@@ -11,10 +11,13 @@ Example:
 from __future__ import annotations
 
 import argparse
+import time
 from dataclasses import dataclass
 from typing import Optional
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+
+get_time = time.perf_counter
 
 
 @dataclass
