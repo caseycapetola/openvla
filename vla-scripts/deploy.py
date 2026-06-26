@@ -117,9 +117,13 @@ class OpenVLAServer:
             )
             return "error"
 
+    def ping(self) -> None:
+        print("Ping!")
+
     def run(self, host: str = "0.0.0.0", port: int = 8000) -> None:
         self.app = FastAPI()
         self.app.post("/act")(self.predict_action)
+        self.app.post("/ping")(self.ping)
         uvicorn.run(self.app, host=host, port=port)
 
 
@@ -137,7 +141,9 @@ class DeployConfig:
 
 @draccus.wrap()
 def deploy(cfg: DeployConfig) -> None:
-    server = OpenVLAServer(cfg.openvla_path)
+    print(f"Deploying OpenVLA model from {cfg.openvla_path} on {cfg.host}:{cfg.port}")
+    server = OpenVLAServer(cfg.openvla_path, attn_implementation="eager")
+    print(f"Server running on {cfg.host}:{cfg.port} (Press CTRL+C to stop)")
     server.run(cfg.host, port=cfg.port)
 
 
