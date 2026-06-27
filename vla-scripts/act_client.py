@@ -33,13 +33,14 @@ class ActClientConfig:
     timeout: float = 30.0
     instruction: str = "do something"
     unnorm_key: Optional[str] = None
-    image_size: int = 256
+    image_size: int = 224
 
 
 def make_payload(cfg: ActClientConfig) -> Dict[str, Any]:
     payload: Dict[str, Any] = {
         "image": np.zeros((cfg.image_size, cfg.image_size, 3), dtype=np.uint8),
         "instruction": cfg.instruction,
+        "unnorm_key": "bridge_orig",
     }
     if cfg.unnorm_key is not None:
         payload["unnorm_key"] = cfg.unnorm_key
