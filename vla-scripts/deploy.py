@@ -104,11 +104,25 @@ class OpenVLAServer:
 
             # Run VLA Inference
             prompt = get_openvla_prompt(instruction, self.openvla_path)
+            # === DEBUG ===
+            print(f"[DEBUG] prompt: {repr(prompt)}")
+            print(f"[DEBUG] image shape: {image.shape}, dtype: {image.dtype}")
+
+            pil_image = Image.fromarray(image).convert("RGB")
+            print(f"[DEBUG] PIL image size: {pil_image.size}")  # (W, H)
+
             inputs = self.processor(
-                images=Image.fromarray(image).convert("RGB"),
+                images=pil_image,
                 text=prompt,
                 return_tensors="pt",
-            ).to(self.device, dtype=torch.bfloat16)
+            )
+            print(f"[DEBUG] input_ids shape: {inputs['input_ids'].shape}")
+            print(f"[DEBUG] attention_mask shape: {inputs['attention_mask'].shape}")
+            print(f"[DEBUG] pixel_values shape: {inputs['pixel_values'].shape}")
+            print(f"[DEBUG] input_ids: {inputs['input_ids']}")
+            # === END DEBUG ===
+
+            inputs = inputs.to(self.device, dtype=torch.bfloat16)
             action = self.vla.predict_action(**inputs, unnorm_key=unnorm_key, do_sample=False)
             if double_encode:
                 return JSONResponse(json_numpy.dumps(action))
