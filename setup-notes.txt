@@ -1,0 +1,18 @@
+# Guide for setting up OpenVLA Client-Server configuration
+
+1. Run `pip install -e .` in the openvla directory
+2. Install flash-attn separately (SEEMS TO ONLY WORK ON NODE WITH A GPU)
+
+```bash
+pip install packaging ninja
+ninja --version; echo $?  # should return exit code 0
+pip install "flash-attn==2.5.5" --no-build-isolation
+```
+
+3. Install server specific packages with `pip install uvicorn fastapi json-numpy`
+
+
+## To run client-server setup
+
+1. Run `python vla-scripts/deploy.py` to run server
+2. Run `python vla-scripts/act_client.py` to run client program
