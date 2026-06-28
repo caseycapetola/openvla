@@ -36,7 +36,7 @@ json_numpy.patch()
 import json
 import logging
 import traceback
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Optional, Union
 
@@ -47,6 +47,10 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from PIL import Image
 from transformers import AutoModelForVision2Seq, AutoProcessor
+
+import time
+import statistics
+import contextlib
 
 # === Utilities ===
 SYSTEM_PROMPT = (
@@ -60,6 +64,61 @@ def get_openvla_prompt(instruction: str, openvla_path: Union[str, Path]) -> str:
         return f"{SYSTEM_PROMPT} USER: What action should the robot take to {instruction.lower()}? ASSISTANT:"
     else:
         return f"In: What action should the robot take to {instruction.lower()}?\nOut:"
+
+
+# Performance testing utilities
+@dataclass
+class LatencyStats:
+    operation: str
+    samples: list[float] = field(default_factory=list)
+
+    def record(self, elapsed_ms: float):
+        self.samples.append(elapsed_ms)
+
+    @property
+    def mean(self) -> float:
+        return statistics.mean(self.samples) if self.samples else 0.0
+
+    @property
+    def p95(self) -> float:
+        return statistics.quantiles(self.samples, n=20)[18] if len(self.samples) >= 2 else self.samples[0]
+
+    def summary(self) -> dict:
+        return {
+            "operation": self.operation,
+            "calls": len(self.samples),
+            "mean_ms": round(self.mean, 2),
+            "min_ms": round(min(self.samples), 2),
+            "max_ms": round(max(self.samples), 2),
+            "p95_ms": round(self.p95, 2),
+        }
+
+
+class PerformanceProfiler:
+    def __init__(self):
+        self._stats: dict[str, LatencyStats] = {}
+
+    @contextlib.contextmanager
+    def measure(self, operation: str):
+        """Context manager to time any block of code."""
+        stats = self._stats.setdefault(operation, LatencyStats(operation))
+        start = time.perf_counter()
+        try:
+            yield
+        finally:
+            elapsed_ms = (time.perf_counter() - start) * 1000
+            stats.record(elapsed_ms)
+
+    def report(self) -> list[dict]:
+        return [s.summary() for s in self._stats.values()]
+
+    def print_report(self):
+        print(f"\n{'Operation':<30} {'Calls':>6} {'Mean ms':>10} {'Min ms':>10} {'Max ms':>10} {'P95 ms':>10}")
+        print("-" * 80)
+        for s in self.report():
+            print(
+                f"{s['operation']:<30} {s['calls']:>6} {s['mean_ms']:>10} {s['min_ms']:>10} {s['max_ms']:>10} {s['p95_ms']:>10}"
+            )
 
 
 # === Server Interface ===
@@ -83,6 +142,9 @@ class OpenVLAServer:
             trust_remote_code=True,
         ).to(self.device)
 
+        # Load profiler
+        self.profiler = PerformanceProfiler()
+
         # [Hacky] Load Dataset Statistics from Disk (if passing a path to a fine-tuned model)
         if os.path.isdir(self.openvla_path):
             with open(Path(self.openvla_path) / "dataset_statistics.json", "r") as f:
@@ -96,13 +158,17 @@ class OpenVLAServer:
                 payload = json.loads(payload["encoded"])
 
             # Parse payload components
-            image, instruction = payload["image"], payload["instruction"]
-            unnorm_key = payload.get("unnorm_key", None)
+            with self.profiler.measure("1_parse_payload"):
+                image, instruction = payload["image"], payload["instruction"]
+                unnorm_key = payload.get("unnorm_key", None)
 
             # Run VLA Inference
-            prompt = get_openvla_prompt(instruction, self.openvla_path)
-            inputs = self.processor(prompt, Image.fromarray(image).convert("RGB")).to(self.device, dtype=torch.bfloat16)
-            action = self.vla.predict_action(**inputs, unnorm_key=unnorm_key, do_sample=False)
+            with self.profiler.measure("2_run_inference"):
+                prompt = get_openvla_prompt(instruction, self.openvla_path)
+                inputs = self.processor(prompt, Image.fromarray(image).convert("RGB")).to(
+                    self.device, dtype=torch.bfloat16
+                )
+                action = self.vla.predict_action(**inputs, unnorm_key=unnorm_key, do_sample=False)
             if double_encode:
                 return JSONResponse(json_numpy.dumps(action))
             else:
@@ -117,9 +183,13 @@ class OpenVLAServer:
             )
             return "error"
 
+    def get_profiler_report(self) -> list[dict]:
+        return self.profiler.report()
+
     def run(self, host: str = "0.0.0.0", port: int = 8000) -> None:
         self.app = FastAPI()
         self.app.post("/act")(self.predict_action)
+        self.app.get("/profiler")(self.get_profiler_report)
         uvicorn.run(self.app, host=host, port=port)
 
 
