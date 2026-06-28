@@ -127,6 +127,20 @@ class OpenVLAServer:
             # === END DEBUG ===
 
             inputs = inputs.to(self.device, dtype=torch.bfloat16)
+
+            # === DEBUG ===
+            print(f"[DEBUG] post-.to() input_ids shape: {inputs['input_ids'].shape}")
+            print(f"[DEBUG] post-.to() pixel_values shape: {inputs['pixel_values'].shape}")
+
+            # Compute expected sequence length manually
+            num_text_tokens = inputs["input_ids"].shape[1]
+            # SigLIP+Dino each produce (224/14)^2 = 256 patch tokens
+            num_image_tokens = 256
+            expected_total = num_text_tokens + num_image_tokens
+            print(f"[DEBUG] text tokens: {num_text_tokens}, image tokens (expected): {num_image_tokens}")
+            print(f"[DEBUG] expected total seq len: {expected_total}")
+            # === END DEBUG ===
+
             action = self.vla.predict_action(**inputs, unnorm_key=unnorm_key, do_sample=False)
             if double_encode:
                 return JSONResponse(json_numpy.dumps(action))
