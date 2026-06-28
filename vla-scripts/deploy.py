@@ -120,10 +120,6 @@ class OpenVLAServer:
             print(f"[DEBUG] attention_mask shape: {inputs['attention_mask'].shape}")
             print(f"[DEBUG] pixel_values shape: {inputs['pixel_values'].shape}")
             print(f"[DEBUG] input_ids: {inputs['input_ids']}")
-
-            if inputs["pixel_values"].ndim == 4 and inputs["pixel_values"].shape[1] == 6:
-                inputs["pixel_values"] = inputs["pixel_values"].reshape(inputs["pixel_values"].shape[0], 2, 3, 224, 224)
-                print(f"[DEBUG] pixel_values reshaped to: {inputs['pixel_values'].shape}")
             # === END DEBUG ===
 
             inputs = inputs.to(self.device, dtype=torch.bfloat16)
