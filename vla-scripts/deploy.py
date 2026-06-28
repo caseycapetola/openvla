@@ -86,6 +86,10 @@ class OpenVLAServer:
             trust_remote_code=True,
         ).to(self.device)
 
+        import transformers_modules
+
+        print("[DEBUG] modeling_prismatic path:", transformers_modules.__file__)
+
         # [Hacky] Load Dataset Statistics from Disk (if passing a path to a fine-tuned model)
         if os.path.isdir(self.openvla_path):
             with open(Path(self.openvla_path) / "dataset_statistics.json", "r") as f:
