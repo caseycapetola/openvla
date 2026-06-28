@@ -165,7 +165,7 @@ class OpenVLAServer:
 @dataclass
 class DeployConfig:
     # fmt: off
-    openvla_path: Union[str, Path] = "openvla/openvla-7b"               # HF Hub Path (or path to local run directory)
+    openvla_path: Union[str, Path] = "/storage/scratch1/5/ccapetola3/openvla-7b-local"               # HF Hub Path (or path to local run directory)
 
     # Server Configuration
     host: str = "0.0.0.0"                                               # Host IP Address
