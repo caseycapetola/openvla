@@ -81,16 +81,31 @@ class LatencyStats:
 
     @property
     def p95(self) -> float:
-        return statistics.quantiles(self.samples, n=20)[18] if len(self.samples) >= 2 else self.samples[0]
+        if len(self.samples) < 2:
+            return self.samples[0] if self.samples else 0.0
+        if len(self.samples) < 20:
+            # Not enough data for quantiles — use sorted index instead
+            sorted_samples = sorted(self.samples)
+            idx = int(len(sorted_samples) * 0.95)
+            return sorted_samples[min(idx, len(sorted_samples) - 1)]
+        return statistics.quantiles(self.samples, n=20)[18]
 
-    def summary(self) -> dict:
+    def summary(self, discard_first_n: int = 3) -> dict:
+        # Remove the first `discard_first_n` samples if they exist
+        if len(self.samples) > discard_first_n:
+            samples = self.samples[discard_first_n:]
+        else:
+            samples = self.samples
+
         return {
             "operation": self.operation,
-            "calls": len(self.samples),
-            "mean_ms": round(self.mean, 4),
-            "min_ms": round(min(self.samples), 4),
-            "max_ms": round(max(self.samples), 4),
-            "p95_ms": round(self.p95, 4),
+            "calls": len(samples),
+            "mean_ms": round(statistics.mean(samples) if samples else 0.0, 4),
+            "min_ms": round(min(samples) if samples else 0.0, 4),
+            "max_ms": round(max(samples) if samples else 0.0, 4),
+            "p95_ms": round(
+                statistics.quantiles(samples, n=20)[18] if len(samples) >= 2 else (samples[0] if samples else 0.0), 4
+            ),
         }
 
 
