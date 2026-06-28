@@ -87,10 +87,10 @@ class LatencyStats:
         return {
             "operation": self.operation,
             "calls": len(self.samples),
-            "mean_ms": round(self.mean, 2),
-            "min_ms": round(min(self.samples), 2),
-            "max_ms": round(max(self.samples), 2),
-            "p95_ms": round(self.p95, 2),
+            "mean_ms": round(self.mean, 4),
+            "min_ms": round(min(self.samples), 4),
+            "max_ms": round(max(self.samples), 4),
+            "p95_ms": round(self.p95, 4),
         }
 
 
