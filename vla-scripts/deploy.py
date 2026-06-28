@@ -76,6 +76,12 @@ class OpenVLAServer:
         self.openvla_path, self.attn_implementation = openvla_path, attn_implementation
         self.device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 
+        import transformers
+
+        print(f"[DEBUG] transformers version: {transformers.__version__}")
+        print(f"[DEBUG] openvla_path is local dir: {os.path.isdir(self.openvla_path)}")
+        print(f"[DEBUG] openvla_path contents: {os.listdir(self.openvla_path)}")
+
         # Load VLA Model using HF AutoClasses
         self.processor = AutoProcessor.from_pretrained(self.openvla_path, trust_remote_code=True)
         self.vla = AutoModelForVision2Seq.from_pretrained(
