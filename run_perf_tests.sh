@@ -21,7 +21,7 @@ done
 echo "" | tee -a "$OUTPUT_FILE"
 echo "========================================" | tee -a "$OUTPUT_FILE"
 echo "Fetching profiler report..." | tee -a "$OUTPUT_FILE"
-python vla-scripts/profiler_client.py 2>&1 | tee -a "$OUTPUT_FILE"
+python vla-scripts/get_perf.py 2>&1 | tee -a "$OUTPUT_FILE"
 
 echo "" | tee -a "$OUTPUT_FILE"
 echo "Test completed at $(date)" | tee -a "$OUTPUT_FILE"

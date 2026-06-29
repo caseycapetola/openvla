@@ -3,7 +3,7 @@ import json_numpy
 json_numpy.patch()
 import numpy as np
 
-from vla_scripts.deploy import PerformanceProfiler
+from deploy import PerformanceProfiler
 
 profiler = PerformanceProfiler()
 

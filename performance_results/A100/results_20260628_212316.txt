@@ -1,0 +1,437 @@
+Performance Test Run - Sun Jun 28 09:23:16 PM EDT 2026
+========================================
+Running inference test 1...
+2026-06-28 21:23:24.318224: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:23:24.318295: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:23:24.319196: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:23:24.324341: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:23:25.382013: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   515.3258   515.3258   515.3258   515.3258
+Running inference test 2...
+2026-06-28 21:23:35.022134: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:23:35.022201: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:23:35.023114: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:23:35.028240: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:23:36.086047: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.3087   246.3087   246.3087   246.3087
+Running inference test 3...
+2026-06-28 21:23:45.465862: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:23:45.465931: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:23:45.466851: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:23:45.472017: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:23:46.527347: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1    245.232    245.232    245.232    245.232
+Running inference test 4...
+2026-06-28 21:23:55.914785: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:23:55.914852: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:23:55.915781: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:23:55.920933: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:23:56.973180: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.9326   245.9326   245.9326   245.9326
+Running inference test 5...
+2026-06-28 21:24:06.333368: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:24:06.333436: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:24:06.334352: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:24:06.339500: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:24:07.403435: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.4909   245.4909   245.4909   245.4909
+Running inference test 6...
+2026-06-28 21:24:16.764793: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:24:16.764863: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:24:16.765780: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:24:16.770942: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:24:17.827257: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.5286   246.5286   246.5286   246.5286
+Running inference test 7...
+2026-06-28 21:24:27.225553: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:24:27.225619: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:24:27.226558: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:24:27.231759: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:24:28.303787: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   247.0742   247.0742   247.0742   247.0742
+Running inference test 8...
+2026-06-28 21:24:37.732728: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:24:37.732799: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:24:37.733723: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:24:37.738911: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:24:38.810642: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   247.3707   247.3707   247.3707   247.3707
+Running inference test 9...
+2026-06-28 21:24:48.217144: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:24:48.217209: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:24:48.218139: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:24:48.223351: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:24:49.288223: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   247.1195   247.1195   247.1195   247.1195
+Running inference test 10...
+2026-06-28 21:24:58.703899: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:24:58.703977: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:24:58.704909: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:24:58.710098: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:24:59.789755: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.8759   246.8759   246.8759   246.8759
+Running inference test 11...
+2026-06-28 21:25:09.158686: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:25:09.158754: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:25:09.159680: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:25:09.164902: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:25:10.229620: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   247.2705   247.2705   247.2705   247.2705
+Running inference test 12...
+2026-06-28 21:25:19.641820: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:25:19.641891: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:25:19.642832: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:25:19.648038: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:25:20.710194: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1     247.23     247.23     247.23     247.23
+Running inference test 13...
+2026-06-28 21:25:30.108123: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:25:30.108209: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:25:30.109141: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:25:30.114357: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:25:31.186028: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.4197   246.4197   246.4197   246.4197
+Running inference test 14...
+2026-06-28 21:25:40.570644: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:25:40.570714: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:25:40.571655: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:25:40.576877: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:25:41.634535: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.4998   246.4998   246.4998   246.4998
+Running inference test 15...
+2026-06-28 21:25:51.026642: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:25:51.026711: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:25:51.027635: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:25:51.032870: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:25:52.098887: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.1579   246.1579   246.1579   246.1579
+Running inference test 16...
+2026-06-28 21:26:01.484433: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:26:01.484499: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:26:01.485422: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:26:01.490632: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:26:02.563842: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.8544   245.8544   245.8544   245.8544
+Running inference test 17...
+2026-06-28 21:26:11.988578: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:26:11.988644: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:26:11.989583: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:26:11.994812: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:26:13.060126: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.9556   245.9556   245.9556   245.9556
+Running inference test 18...
+2026-06-28 21:26:22.445055: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:26:22.445123: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:26:22.446073: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:26:22.451370: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:26:23.514611: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.1975   246.1975   246.1975   246.1975
+Running inference test 19...
+2026-06-28 21:26:32.890117: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:26:32.890177: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:26:32.891105: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:26:32.896358: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:26:33.961131: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.0229   246.0229   246.0229   246.0229
+Running inference test 20...
+2026-06-28 21:26:43.373432: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:26:43.373503: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:26:43.374436: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:26:43.379720: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:26:44.440618: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.1642   246.1642   246.1642   246.1642
+Running inference test 21...
+2026-06-28 21:26:53.831127: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:26:53.831191: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:26:53.832132: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:26:53.837386: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:26:54.908181: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   244.9106   244.9106   244.9106   244.9106
+Running inference test 22...
+2026-06-28 21:27:04.295432: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:27:04.295501: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:27:04.296413: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:27:04.301567: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:27:05.353524: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.3868   245.3868   245.3868   245.3868
+Running inference test 23...
+2026-06-28 21:27:14.736892: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:27:14.736978: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:27:14.737888: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:27:14.743004: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:27:15.787495: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.1593   245.1593   245.1593   245.1593
+Running inference test 24...
+2026-06-28 21:27:25.135588: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:27:25.135674: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:27:25.136618: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:27:25.141950: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:27:26.219195: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1    245.177    245.177    245.177    245.177
+Running inference test 25...
+2026-06-28 21:27:35.602159: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:27:35.602231: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:27:35.603157: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:27:35.608382: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:27:36.678128: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1    244.844    244.844    244.844    244.844
+Running inference test 26...
+2026-06-28 21:27:46.057642: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:27:46.057712: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:27:46.058640: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:27:46.063883: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:27:47.124656: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.2921   245.2921   245.2921   245.2921
+Running inference test 27...
+2026-06-28 21:27:56.475305: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:27:56.475377: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:27:56.476298: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:27:56.481530: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:27:57.552845: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1    244.466    244.466    244.466    244.466
+Running inference test 28...
+2026-06-28 21:28:06.908565: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:28:06.908632: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:28:06.909580: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:28:06.914810: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:28:07.980010: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   244.7491   244.7491   244.7491   244.7491
+Running inference test 29...
+2026-06-28 21:28:17.347062: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:28:17.347149: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:28:17.348091: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:28:17.353373: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:28:18.412322: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.2763   245.2763   245.2763   245.2763
+Running inference test 30...
+2026-06-28 21:28:27.797704: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:28:27.797770: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:28:27.798706: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:28:27.803914: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:28:28.871971: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.5809   246.5809   246.5809   246.5809
+Running inference test 31...
+2026-06-28 21:28:38.261471: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:28:38.261537: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:28:38.262466: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:28:38.267712: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:28:39.333696: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   246.8625   246.8625   246.8625   246.8625
+Running inference test 32...
+2026-06-28 21:29:05.409996: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:29:05.410089: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:29:05.411032: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:29:05.416342: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:29:06.481756: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1  4406.4243  4406.4243  4406.4243  4406.4243
+Running inference test 33...
+2026-06-28 21:29:20.306510: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-06-28 21:29:20.306578: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-06-28 21:29:20.307496: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-06-28 21:29:20.312719: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-28 21:29:21.407591: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[ 4.48837174e-03  1.19467659e-03  1.85814697e-05 -2.69598384e-02
+ -2.02066744e-02 -3.55262690e-02  9.96078431e-01]
+
+Operation                       Calls    Mean ms     Min ms     Max ms     P95 ms
+--------------------------------------------------------------------------------
+inference_invocation                1   245.6198   245.6198   245.6198   245.6198
+
+========================================
+Fetching profiler report...
+[{'operation': '1_parse_payload', 'calls': 30, 'mean_ms': 0.0024, 'min_ms': 0.0019, 'max_ms': 0.0028, 'p95_ms': 0.0028}, {'operation': '2_run_inference', 'calls': 30, 'mean_ms': 378.6524, 'min_ms': 238.4029, 'max_ms': 4400.2217, 'p95_ms': 2112.8184}]
+
+Test completed at Sun Jun 28 09:29:23 PM EDT 2026
