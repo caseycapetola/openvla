@@ -168,9 +168,10 @@ class OpenVLAServer:
     def predict_action(self, payload: Dict[str, Any]) -> str:
         try:
             if double_encode := "encoded" in payload:
-                # Support cases where `json_numpy` is hard to install, and numpy arrays are "double-encoded" as strings
-                assert len(payload.keys()) == 1, "Only uses encoded payload!"
-                payload = json.loads(payload["encoded"])
+                with self.profiler.measure("0_decode_payload"):
+                    # Support cases where `json_numpy` is hard to install, and numpy arrays are "double-encoded" as strings
+                    assert len(payload.keys()) == 1, "Only uses encoded payload!"
+                    payload = json.loads(payload["encoded"])
 
             # Parse payload components
             with self.profiler.measure("1_parse_payload"):
@@ -185,9 +186,11 @@ class OpenVLAServer:
                 )
                 action = self.vla.predict_action(**inputs, unnorm_key=unnorm_key, do_sample=False)
             if double_encode:
-                return JSONResponse(json_numpy.dumps(action))
+                with self.profiler.measure("3_encode_and_return_action"):
+                    return JSONResponse(json_numpy.dumps(action))
             else:
-                return JSONResponse(action)
+                with self.profiler.measure("3_return_action"):
+                    return JSONResponse(action)
         except:  # noqa: E722
             logging.error(traceback.format_exc())
             logging.warning(

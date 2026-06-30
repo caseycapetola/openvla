@@ -5,6 +5,11 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 OUTPUT_DIR="performance_results/v01/A100-1"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
 
+# Exported so act_client.py's CSV export uses the SAME timestamp/dir across
+# every iteration of the loop below, consolidating all rows into one CSV.
+export RUN_TIMESTAMP="$TIMESTAMP"
+export RUN_OUTPUT_DIR="$OUTPUT_DIR"
+
 mkdir -p "$OUTPUT_DIR"
 echo "Writing results to $OUTPUT_FILE"
 echo "Performance Test Run - $(date)" | tee "$OUTPUT_FILE"
@@ -14,6 +19,7 @@ echo "========================================" | tee -a "$OUTPUT_FILE"
 for i in {1..33}; do
     sleep 5
     echo "Running inference test $i..." | tee -a "$OUTPUT_FILE"
+    export RUN_ITERATION="$i"
     python vla-scripts/act_client.py 2>&1 | tee -a "$OUTPUT_FILE"
 done
 
@@ -26,3 +32,4 @@ python vla-scripts/get_perf.py 2>&1 | tee -a "$OUTPUT_FILE"
 echo "" | tee -a "$OUTPUT_FILE"
 echo "Test completed at $(date)" | tee -a "$OUTPUT_FILE"
 echo "Results saved to $OUTPUT_FILE"
+echo "Consolidated profiler CSV: $OUTPUT_DIR/profile_${TIMESTAMP}.csv"
