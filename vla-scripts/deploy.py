@@ -222,6 +222,7 @@ class DeployConfig:
 
 @draccus.wrap()
 def deploy(cfg: DeployConfig) -> None:
+    print(f"[INIT] OPENVLA_PATH: {cfg.openvla_path}")
     server = OpenVLAServer(cfg.openvla_path)
     server.run(cfg.host, port=cfg.port)
 

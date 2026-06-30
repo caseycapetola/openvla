@@ -2,7 +2,7 @@
 
 # Set up output directory and file with timestamp
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-OUTPUT_DIR="performance_results/H100-1"
+OUTPUT_DIR="performance_results/v01/A100-1"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
 
 mkdir -p "$OUTPUT_DIR"
