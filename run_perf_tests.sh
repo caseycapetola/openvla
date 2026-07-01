@@ -2,7 +2,7 @@
 
 # Set up output directory and file with timestamp
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-OUTPUT_DIR="performance_results/v01/A100-1"
+OUTPUT_DIR="performance_results/v01/A100-1GPU_2"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
 
 # Exported so act_client.py's CSV export uses the SAME timestamp/dir across
