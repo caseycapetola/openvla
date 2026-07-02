@@ -33,17 +33,20 @@ import os.path
 import json_numpy
 
 json_numpy.patch()
+import csv
 import json
 import logging
 import traceback
 from dataclasses import dataclass, field
+from datetime import datetime
 from pathlib import Path
+import threading
 from typing import Any, Dict, Optional, Union
 
 import draccus
 import torch
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from PIL import Image
 from transformers import AutoModelForVision2Seq, AutoProcessor
@@ -136,6 +139,60 @@ class PerformanceProfiler:
             )
 
 
+@dataclass
+class RequestLogWriter:
+    output_dir: Path
+    run_timestamp: str
+    _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
+
+    def __post_init__(self) -> None:
+        self.output_dir = Path(self.output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def _normalize_client_id(self, client_id: str) -> str:
+        if client_id.isdigit():
+            return f"{int(client_id):02d}"
+        return client_id
+
+    def _csv_path(self, client_id: str) -> Path:
+        client_dir = self.output_dir / f"client_{self._normalize_client_id(client_id)}"
+        client_dir.mkdir(parents=True, exist_ok=True)
+        return client_dir / "server_metrics.csv"
+
+    def append(self, row: dict[str, Any]) -> None:
+        client_id = str(row.get("client_id", "unknown"))
+        csv_path = self._csv_path(client_id)
+        file_exists = csv_path.exists()
+
+        with self._lock, open(csv_path, "a", newline="") as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(
+                    [
+                        "run_timestamp",
+                        "client_id",
+                        "request_id",
+                        "request_index",
+                        "status",
+                        "server_latency_ms",
+                        "client_host",
+                        "logged_at",
+                    ]
+                )
+            writer.writerow(
+                [
+                    self.run_timestamp,
+                    row.get("client_id", "unknown"),
+                    row.get("request_id", ""),
+                    row.get("request_index", ""),
+                    row.get("status", "ok"),
+                    row.get("server_latency_ms", 0.0),
+                    row.get("client_host", ""),
+                    datetime.now().isoformat(timespec="seconds"),
+                ]
+            )
+
+
 # === Server Interface ===
 class OpenVLAServer:
     def __init__(self, openvla_path: Union[str, Path], attn_implementation: Optional[str] = "flash_attention_2") -> Path:
@@ -160,12 +217,25 @@ class OpenVLAServer:
         # Load profiler
         self.profiler = PerformanceProfiler()
 
+        # Optional request logger used for performance tests.
+        perf_output_dir = os.environ.get("RUN_OUTPUT_DIR")
+        perf_run_timestamp = os.environ.get("RUN_TIMESTAMP", datetime.now().strftime("%Y%m%d_%H%M%S"))
+        self.request_logger = (
+            RequestLogWriter(Path(perf_output_dir), perf_run_timestamp) if perf_output_dir is not None else None
+        )
+
         # [Hacky] Load Dataset Statistics from Disk (if passing a path to a fine-tuned model)
         if os.path.isdir(self.openvla_path):
             with open(Path(self.openvla_path) / "dataset_statistics.json", "r") as f:
                 self.vla.norm_stats = json.load(f)
 
-    def predict_action(self, payload: Dict[str, Any]) -> str:
+    def predict_action(self, payload: Dict[str, Any], request: Request) -> str:
+        client_id = request.headers.get("x-client-id", "unknown")
+        request_id = request.headers.get("x-request-id", "")
+        request_index = request.headers.get("x-request-index", "")
+        client_host = request.client.host if request.client is not None else ""
+        request_start = time.perf_counter()
+        request_status = "ok"
         try:
             if double_encode := "encoded" in payload:
                 with self.profiler.measure("0_decode_payload"):
@@ -192,6 +262,7 @@ class OpenVLAServer:
                 with self.profiler.measure("3_return_action"):
                     return JSONResponse(action)
         except:  # noqa: E722
+            request_status = "error"
             logging.error(traceback.format_exc())
             logging.warning(
                 "Your request threw an error; make sure your request complies with the expected format:\n"
@@ -200,6 +271,18 @@ class OpenVLAServer:
                 "de-normalizing the output actions."
             )
             return "error"
+        finally:
+            if self.request_logger is not None:
+                self.request_logger.append(
+                    {
+                        "client_id": client_id,
+                        "request_id": request_id,
+                        "request_index": request_index,
+                        "status": request_status,
+                        "server_latency_ms": round((time.perf_counter() - request_start) * 1000, 4),
+                        "client_host": client_host,
+                    }
+                )
 
     def get_profiler_report(self) -> list[dict]:
         return self.profiler.report()
