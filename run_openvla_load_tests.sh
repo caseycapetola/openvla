@@ -5,12 +5,10 @@ set -euo pipefail
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 OUTPUT_DIR="perf_tests/v01/openvla_load_test/${TIMESTAMP}"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
-SERVER_LOG="$OUTPUT_DIR/server_stdout.log"
 SERVER_URL="${SERVER_URL:-http://0.0.0.0:8000/act}"
 SERVER_PROFILER_URL="${SERVER_URL%/act}/profiler"
 NUM_CLIENTS=5
 REQUESTS_PER_CLIENT=10
-START_SERVER="${START_SERVER:-1}"
 
 export RUN_TIMESTAMP="$TIMESTAMP"
 export RUN_OUTPUT_DIR="$OUTPUT_DIR"
@@ -22,24 +20,7 @@ echo "Clients: $NUM_CLIENTS, requests per client: $REQUESTS_PER_CLIENT" | tee -a
 echo "Performance Test Run - $(date)" | tee -a "$OUTPUT_FILE"
 echo "========================================" | tee -a "$OUTPUT_FILE"
 
-SERVER_PID=""
-cleanup() {
-    if [[ -n "${SERVER_PID}" ]] && kill -0 "$SERVER_PID" 2>/dev/null; then
-        kill "$SERVER_PID" || true
-        wait "$SERVER_PID" || true
-    fi
-}
-
-if [[ "$START_SERVER" == "1" ]]; then
-    echo "Starting OpenVLA server..." | tee -a "$OUTPUT_FILE"
-    python vla-scripts/deploy.py >"$SERVER_LOG" 2>&1 &
-    SERVER_PID=$!
-    trap cleanup EXIT
-
-    echo "Waiting for server at $SERVER_PROFILER_URL ..." | tee -a "$OUTPUT_FILE"
-    SERVER_READY=0
-    for _ in {1..120}; do
-        if python - "$SERVER_PROFILER_URL" <<'PY'
+if ! python - "$SERVER_PROFILER_URL" <<'PY'
 import sys
 import requests
 
@@ -47,18 +28,12 @@ try:
     requests.get(sys.argv[1], timeout=1).raise_for_status()
 except Exception:
     raise SystemExit(1)
+else:
+    raise SystemExit(0)
 PY
-        then
-            SERVER_READY=1
-            break
-        fi
-        sleep 5
-    done
-
-    if [[ "$SERVER_READY" -ne 1 ]]; then
-        echo "Server did not become ready in time. See $SERVER_LOG for details." | tee -a "$OUTPUT_FILE"
-        exit 1
-    fi
+then
+    echo "Server is not reachable at $SERVER_URL. Start it with run_openvla_server.sh first." | tee -a "$OUTPUT_FILE"
+    exit 1
 fi
 
 CLIENT_PIDS=()
@@ -84,11 +59,6 @@ echo "" | tee -a "$OUTPUT_FILE"
 echo "========================================" | tee -a "$OUTPUT_FILE"
 echo "Fetching profiler report..." | tee -a "$OUTPUT_FILE"
 python vla-scripts/get_perf.py 2>&1 | tee -a "$OUTPUT_FILE"
-
-if [[ "$START_SERVER" == "1" ]]; then
-    cleanup
-    trap - EXIT
-fi
 
 echo "" | tee -a "$OUTPUT_FILE"
 echo "Test completed at $(date)" | tee -a "$OUTPUT_FILE"
