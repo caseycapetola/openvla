@@ -93,7 +93,7 @@ class LatencyStats:
             return sorted_samples[min(idx, len(sorted_samples) - 1)]
         return statistics.quantiles(self.samples, n=20)[18]
 
-    def summary(self, discard_first_n: int = 3) -> dict:
+    def summary(self, discard_first_n: int = 5) -> dict:
         # Remove the first `discard_first_n` samples if they exist
         if len(self.samples) > discard_first_n:
             samples = self.samples[discard_first_n:]
