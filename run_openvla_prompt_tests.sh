@@ -3,13 +3,13 @@
 set -euo pipefail
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-OUTPUT_DIR="perf_tests/7b/openvla_prompt_tests/A100/${TIMESTAMP}"
+OUTPUT_DIR="perf_tests/v01/openvla_prompt_tests/A100/${TIMESTAMP}"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
 SERVER_URL="${SERVER_URL:-http://0.0.0.0:8000/act}"
 SERVER_PROFILER_URL="${SERVER_URL%/act}/profiler"
 CLIENT_SCRIPT="vla-scripts/random_prompt_load_test_client.py"
 NUM_CLIENTS=1
-REQUESTS_PER_CLIENT=33
+REQUESTS_PER_CLIENT=55
 
 export RUN_TIMESTAMP="$TIMESTAMP"
 export RUN_OUTPUT_DIR="$OUTPUT_DIR"
