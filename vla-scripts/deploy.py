@@ -113,11 +113,13 @@ class LatencyStats:
 
 
 class PerformanceProfiler:
-    def __init__(self):
+
+    def __init__(self, sample_writer: Optional["OperationSampleWriter"] = None):
         self._stats: dict[str, LatencyStats] = {}
+        self._sample_writer = sample_writer
 
     @contextlib.contextmanager
-    def measure(self, operation: str):
+    def measure(self, operation: str, context: Optional[dict[str, Any]] = None):
         """Context manager to time any block of code."""
         stats = self._stats.setdefault(operation, LatencyStats(operation))
         start = time.perf_counter()
@@ -126,9 +128,31 @@ class PerformanceProfiler:
         finally:
             elapsed_ms = (time.perf_counter() - start) * 1000
             stats.record(elapsed_ms)
+            if self._sample_writer is not None:
+                self._sample_writer.append(
+                    {
+                        "operation": operation,
+                        "sample_index": len(stats.samples),
+                        "elapsed_ms": round(elapsed_ms, 4),
+                        **(context or {}),
+                    }
+                )
 
     def report(self) -> list[dict]:
         return [s.summary() for s in self._stats.values()]
+
+    def full_report(self) -> list[dict]:
+        rows: list[dict] = []
+        for operation, stats in self._stats.items():
+            for sample_index, elapsed_ms in enumerate(stats.samples, start=1):
+                rows.append(
+                    {
+                        "operation": operation,
+                        "sample_index": sample_index,
+                        "elapsed_ms": round(elapsed_ms, 4),
+                    }
+                )
+        return rows
 
     def print_report(self):
         print(f"\n{'Operation':<30} {'Calls':>6} {'Mean ms':>10} {'Min ms':>10} {'Max ms':>10} {'P95 ms':>10}")
@@ -136,6 +160,60 @@ class PerformanceProfiler:
         for s in self.report():
             print(
                 f"{s['operation']:<30} {s['calls']:>6} {s['mean_ms']:>10} {s['min_ms']:>10} {s['max_ms']:>10} {s['p95_ms']:>10}"
+            )
+
+    def print_full_report(self):
+        print(f"\n{'Operation':<30} {'Sample':>6} {'Elapsed ms':>12}")
+        print("-" * 54)
+        for s in self.full_report():
+            print(f"{s['operation']:<30} {s['sample_index']:>6} {s['elapsed_ms']:>12}")
+
+
+@dataclass
+class OperationSampleWriter:
+    output_dir: Path
+    run_timestamp: str
+    _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
+
+    def __post_init__(self) -> None:
+        self.output_dir = Path(self.output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def _csv_path(self) -> Path:
+        return self.output_dir / "server_operation_metrics.csv"
+
+    def append(self, row: dict[str, Any]) -> None:
+        csv_path = self._csv_path()
+        file_exists = csv_path.exists()
+
+        with self._lock, open(csv_path, "a", newline="") as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(
+                    [
+                        "run_timestamp",
+                        "operation",
+                        "sample_index",
+                        "elapsed_ms",
+                        "client_id",
+                        "request_id",
+                        "request_index",
+                        "client_host",
+                        "logged_at",
+                    ]
+                )
+            writer.writerow(
+                [
+                    self.run_timestamp,
+                    row.get("operation", ""),
+                    row.get("sample_index", ""),
+                    row.get("elapsed_ms", 0.0),
+                    row.get("client_id", "unknown"),
+                    row.get("request_id", ""),
+                    row.get("request_index", ""),
+                    row.get("client_host", ""),
+                    datetime.now().isoformat(timespec="seconds"),
+                ]
             )
 
 
@@ -214,15 +292,17 @@ class OpenVLAServer:
             trust_remote_code=True,
         ).to(self.device)
 
-        # Load profiler
-        self.profiler = PerformanceProfiler()
-
-        # Optional request logger used for performance tests.
+        # Optional request / operation loggers used for performance tests.
         perf_output_dir = os.environ.get("RUN_OUTPUT_DIR")
         perf_run_timestamp = os.environ.get("RUN_TIMESTAMP", datetime.now().strftime("%Y%m%d_%H%M%S"))
-        self.request_logger = (
-            RequestLogWriter(Path(perf_output_dir), perf_run_timestamp) if perf_output_dir is not None else None
-        )
+        self.request_logger = None
+        self.sample_logger = None
+        if perf_output_dir is not None:
+            perf_output_path = Path(perf_output_dir)
+            self.request_logger = RequestLogWriter(perf_output_path, perf_run_timestamp)
+            self.sample_logger = OperationSampleWriter(perf_output_path, perf_run_timestamp)
+
+        self.profiler = PerformanceProfiler(sample_writer=self.sample_logger)
 
         # [Hacky] Load Dataset Statistics from Disk (if passing a path to a fine-tuned model)
         if os.path.isdir(self.openvla_path):
@@ -236,30 +316,36 @@ class OpenVLAServer:
         client_host = request.client.host if request.client is not None else ""
         request_start = time.perf_counter()
         request_status = "ok"
+        operation_context = {
+            "client_id": client_id,
+            "request_id": request_id,
+            "request_index": request_index,
+            "client_host": client_host,
+        }
         try:
             if double_encode := "encoded" in payload:
-                with self.profiler.measure("0_decode_payload"):
+                with self.profiler.measure("0_decode_payload", context=operation_context):
                     # Support cases where `json_numpy` is hard to install, and numpy arrays are "double-encoded" as strings
                     assert len(payload.keys()) == 1, "Only uses encoded payload!"
                     payload = json.loads(payload["encoded"])
 
             # Parse payload components
-            with self.profiler.measure("1_parse_payload"):
+            with self.profiler.measure("1_parse_payload", context=operation_context):
                 image, instruction = payload["image"], payload["instruction"]
                 unnorm_key = payload.get("unnorm_key", None)
 
             # Run VLA Inference
-            with self.profiler.measure("2_run_inference"):
+            with self.profiler.measure("2_run_inference", context=operation_context):
                 prompt = get_openvla_prompt(instruction, self.openvla_path)
                 inputs = self.processor(prompt, Image.fromarray(image).convert("RGB")).to(
                     self.device, dtype=torch.bfloat16
                 )
                 action = self.vla.predict_action(**inputs, unnorm_key=unnorm_key, do_sample=False)
             if double_encode:
-                with self.profiler.measure("3_encode_and_return_action"):
+                with self.profiler.measure("3_encode_and_return_action", context=operation_context):
                     return JSONResponse(json_numpy.dumps(action))
             else:
-                with self.profiler.measure("3_return_action"):
+                with self.profiler.measure("3_return_action", context=operation_context):
                     return JSONResponse(action)
         except:  # noqa: E722
             request_status = "error"
@@ -287,10 +373,14 @@ class OpenVLAServer:
     def get_profiler_report(self) -> list[dict]:
         return self.profiler.report()
 
+    def get_profiler_full_report(self) -> list[dict]:
+        return self.profiler.full_report()
+
     def run(self, host: str = "0.0.0.0", port: int = 8000) -> None:
         self.app = FastAPI()
         self.app.post("/act")(self.predict_action)
         self.app.get("/profiler")(self.get_profiler_report)
+        self.app.get("/profiler/full")(self.get_profiler_full_report)
         uvicorn.run(self.app, host=host, port=port)
 
 
