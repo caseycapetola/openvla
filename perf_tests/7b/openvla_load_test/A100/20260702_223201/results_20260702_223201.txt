@@ -1,0 +1,5 @@
+Run directory: perf_tests/7b/openvla_load_test/A100/20260702_223201
+Clients: 5, requests per client: 10
+Performance Test Run - Thu Jul  2 10:32:01 PM EDT 2026
+========================================
+Server is not reachable at http://0.0.0.0:8000/act. Start it with run_openvla_server.sh first.
