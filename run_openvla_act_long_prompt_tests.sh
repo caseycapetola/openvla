@@ -3,14 +3,14 @@
 set -euo pipefail
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-OUTPUT_DIR="perf_tests/v01/openvla_act_long_prompt_tests/A100/${TIMESTAMP}"
+OUTPUT_DIR="perf_tests/v01/openvla_one_client_stress_test/A100/${TIMESTAMP}"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
 SERVER_URL="${SERVER_URL:-http://0.0.0.0:8000/act}"
 SERVER_PROFILER_URL="${SERVER_URL%/act}/profiler"
 CLIENT_SCRIPT="vla-scripts/act_client.py"
 NUM_CLIENTS=1
-REQUESTS_PER_CLIENT=55
-SLEEP_SECONDS=5
+REQUESTS_PER_CLIENT=33
+SLEEP_SECONDS=0
 
 export RUN_TIMESTAMP="$TIMESTAMP"
 export RUN_OUTPUT_DIR="$OUTPUT_DIR"
