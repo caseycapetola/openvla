@@ -3,7 +3,7 @@
 set -euo pipefail
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-OUTPUT_DIR="perf_tests/7b/openvla_load_test/A100/${TIMESTAMP}"
+OUTPUT_DIR="perf_tests/7b/openvla_load_test/A100-2/${TIMESTAMP}"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
 SERVER_URL="${SERVER_URL:-http://0.0.0.0:8000/act}"
 SERVER_PROFILER_URL="${SERVER_URL%/act}/profiler"
