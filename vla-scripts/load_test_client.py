@@ -27,6 +27,16 @@ def build_payload(instruction: str, unnorm_key: str, image_height: int, image_wi
     }
 
 
+def header_float(response: requests.Response, header_name: str) -> str:
+    value = response.headers.get(header_name, "")
+    if value == "":
+        return ""
+    try:
+        return f"{float(value):.4f}"
+    except ValueError:
+        return ""
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run repeated OpenVLA requests and log client-side latency.")
     parser.add_argument("--client-id", type=int, required=True, help="Numeric client identifier.")
@@ -83,6 +93,12 @@ def main() -> None:
                     "status",
                     "status_code",
                     "client_latency_ms",
+                    "server_total_latency_ms",
+                    "server_decode_latency_ms",
+                    "server_parse_latency_ms",
+                    "server_inference_latency_ms",
+                    "server_encode_latency_ms",
+                    "server_overhead_latency_ms",
                     "response_bytes",
                     "error",
                     "started_at",
@@ -105,12 +121,24 @@ def main() -> None:
             status = "ok"
             status_code = ""
             error_text = ""
+            server_total_latency_ms = ""
+            server_decode_latency_ms = ""
+            server_parse_latency_ms = ""
+            server_inference_latency_ms = ""
+            server_encode_latency_ms = ""
+            server_overhead_latency_ms = ""
 
             try:
                 response = requests.post(args.server_url, json=payload, headers=headers, timeout=args.timeout)
                 status_code = response.status_code
-                response.raise_for_status()
                 response_bytes = len(response.content)
+                server_total_latency_ms = header_float(response, "X-Server-Total-Latency-Ms")
+                server_decode_latency_ms = header_float(response, "X-Server-Decode-Latency-Ms")
+                server_parse_latency_ms = header_float(response, "X-Server-Parse-Latency-Ms")
+                server_inference_latency_ms = header_float(response, "X-Server-Inference-Latency-Ms")
+                server_encode_latency_ms = header_float(response, "X-Server-Encode-Latency-Ms")
+                server_overhead_latency_ms = header_float(response, "X-Server-Overhead-Latency-Ms")
+                response.raise_for_status()
                 _ = response.json()
             except Exception as exc:  # noqa: BLE001
                 status = "error"
@@ -128,6 +156,12 @@ def main() -> None:
                     status,
                     status_code,
                     client_latency_ms,
+                    server_total_latency_ms,
+                    server_decode_latency_ms,
+                    server_parse_latency_ms,
+                    server_inference_latency_ms,
+                    server_encode_latency_ms,
+                    server_overhead_latency_ms,
                     response_bytes,
                     error_text,
                     started_at,
@@ -136,7 +170,7 @@ def main() -> None:
             )
             print(
                 f"client={args.client_id} request={request_index}/{args.num_requests} "
-                f"status={status} latency_ms={client_latency_ms:.2f}"
+                f"status={status} client_ms={client_latency_ms:.2f} server_ms={server_total_latency_ms or 'n/a'}"
             )
 
     print(f"Wrote client metrics to {csv_path}")

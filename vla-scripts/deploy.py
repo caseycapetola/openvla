@@ -201,6 +201,11 @@ class RequestLogWriter:
                         "request_index",
                         "status",
                         "server_latency_ms",
+                        "server_decode_ms",
+                        "server_parse_ms",
+                        "server_inference_ms",
+                        "server_encode_ms",
+                        "server_overhead_ms",
                         "client_host",
                         "logged_at",
                     ]
@@ -213,6 +218,11 @@ class RequestLogWriter:
                     row.get("request_index", ""),
                     row.get("status", "ok"),
                     row.get("server_latency_ms", 0.0),
+                    row.get("server_decode_ms", 0.0),
+                    row.get("server_parse_ms", 0.0),
+                    row.get("server_inference_ms", 0.0),
+                    row.get("server_encode_ms", 0.0),
+                    row.get("server_overhead_ms", 0.0),
                     row.get("client_host", ""),
                     datetime.now().isoformat(timespec="seconds"),
                 ]
@@ -268,41 +278,72 @@ class OpenVLAServer:
         client_host = request.client.host if request.client is not None else ""
         request_start = time.perf_counter()
         request_status = "ok"
+        decode_ms = 0.0
+        parse_ms = 0.0
+        inference_ms = 0.0
+        encode_ms = 0.0
         operation_context = {
             "client_id": client_id,
             "request_id": request_id,
             "request_index": request_index,
             "client_host": client_host,
         }
+
+        def make_timing_headers(total_ms: float) -> dict[str, str]:
+            overhead_ms = max(total_ms - inference_ms, 0.0)
+            return {
+                "X-Server-Total-Latency-Ms": f"{total_ms:.4f}",
+                "X-Server-Decode-Latency-Ms": f"{decode_ms:.4f}",
+                "X-Server-Parse-Latency-Ms": f"{parse_ms:.4f}",
+                "X-Server-Inference-Latency-Ms": f"{inference_ms:.4f}",
+                "X-Server-Encode-Latency-Ms": f"{encode_ms:.4f}",
+                "X-Server-Overhead-Latency-Ms": f"{overhead_ms:.4f}",
+            }
+
         try:
             if double_encode := "encoded" in payload:
                 with self.profiler.measure("0_decode_payload", context=operation_context):
                     # Support cases where `json_numpy` is hard to install, and numpy arrays are "double-encoded" as strings
+                    decode_start = time.perf_counter()
                     assert len(payload.keys()) == 1, "Only uses encoded payload!"
                     payload = json.loads(payload["encoded"])
+                    decode_ms = round((time.perf_counter() - decode_start) * 1000, 4)
 
             with self.profiler.measure("1_parse_payload", context=operation_context):
+                parse_start = time.perf_counter()
                 observation = payload
                 instruction = observation["instruction"]
+                parse_ms = round((time.perf_counter() - parse_start) * 1000, 4)
 
             with self.profiler.measure("2_run_inference", context=operation_context):
-                action = get_vla_action(
-                    self.cfg,
-                    self.vla,
-                    self.processor,
-                    observation,
-                    instruction,
-                    action_head=self.action_head,
-                    proprio_projector=self.proprio_projector,
-                    use_film=self.cfg.use_film,
-                )
+                inference_start = time.perf_counter()
+                try:
+                    action = get_vla_action(
+                        self.cfg,
+                        self.vla,
+                        self.processor,
+                        observation,
+                        instruction,
+                        action_head=self.action_head,
+                        proprio_projector=self.proprio_projector,
+                        use_film=self.cfg.use_film,
+                    )
+                finally:
+                    inference_ms = round((time.perf_counter() - inference_start) * 1000, 4)
 
             if double_encode:
                 with self.profiler.measure("3_encode_and_return_action", context=operation_context):
-                    return JSONResponse(json_numpy.dumps(action))
+                    encode_start = time.perf_counter()
+                    response_content = json_numpy.dumps(action)
+                    encode_ms = round((time.perf_counter() - encode_start) * 1000, 4)
             else:
                 with self.profiler.measure("3_return_action", context=operation_context):
-                    return JSONResponse(action)
+                    encode_start = time.perf_counter()
+                    response_content = action
+                    encode_ms = round((time.perf_counter() - encode_start) * 1000, 4)
+
+            total_ms = round((time.perf_counter() - request_start) * 1000, 4)
+            return JSONResponse(content=response_content, headers=make_timing_headers(total_ms))
         except:  # noqa: E722
             request_status = "error"
             logging.error(traceback.format_exc())
@@ -310,16 +351,23 @@ class OpenVLAServer:
                 "Your request threw an error; make sure your request complies with the expected format:\n"
                 "{'observation': dict, 'instruction': str}\n"
             )
-            return "error"
+            total_ms = round((time.perf_counter() - request_start) * 1000, 4)
+            return JSONResponse(content={"error": "error"}, status_code=500, headers=make_timing_headers(total_ms))
         finally:
             if self.request_logger is not None:
+                total_ms = round((time.perf_counter() - request_start) * 1000, 4)
                 self.request_logger.append(
                     {
                         "client_id": client_id,
                         "request_id": request_id,
                         "request_index": request_index,
                         "status": request_status,
-                        "server_latency_ms": round((time.perf_counter() - request_start) * 1000, 4),
+                        "server_latency_ms": total_ms,
+                        "server_decode_ms": decode_ms,
+                        "server_parse_ms": parse_ms,
+                        "server_inference_ms": inference_ms,
+                        "server_encode_ms": encode_ms,
+                        "server_overhead_ms": round(max(total_ms - inference_ms, 0.0), 4),
                         "client_host": client_host,
                     }
                 )
@@ -379,6 +427,7 @@ class DeployConfig:
 
 @draccus.wrap()
 def deploy(cfg: DeployConfig) -> None:
+    print(f"[INIT] OPENVLA CHECKPOINT: {cfg.pretrained_checkpoint}")
     server = OpenVLAServer(cfg)
     server.run(cfg.host, port=cfg.port)
 
