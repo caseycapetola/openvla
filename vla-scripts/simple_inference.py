@@ -18,7 +18,7 @@ from prismatic.vla.constants import NUM_ACTIONS_CHUNK, PROPRIO_DIM
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run repeated OpenVLA inference calls and log latency.")
-    parser.add_argument("--num-calls", type=int, default=10, help="Number of times to call get_vla_action.")
+    parser.add_argument("--num-calls", type=int, default=61, help="Number of times to call get_vla_action.")
     parser.add_argument(
         "--output-dir",
         default=os.environ.get("RUN_OUTPUT_DIR", "performance_results/openvla_oft_simple_inference"),
@@ -34,6 +34,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    metrics_filename = f"simple_inference_operation_metrics_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}.csv"
 
     # Instantiate config (see class GenerateConfig in experiments/robot/libero/run_libero_eval.py for definitions)
     cfg = GenerateConfig(
@@ -73,7 +74,7 @@ def main() -> None:
     sample_writer = OperationSampleWriter(
         output_dir=Path(args.output_dir),
         run_timestamp=args.run_timestamp,
-        filename="simple_inference_operation_metrics.csv",
+        filename=metrics_filename,
     )
     profiler = PerformanceProfiler(sample_writer=sample_writer)
 
