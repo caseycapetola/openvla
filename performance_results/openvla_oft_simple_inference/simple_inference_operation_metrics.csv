@@ -1,0 +1,11 @@
+run_timestamp,operation,sample_index,elapsed_ms,client_id,request_id,request_index,client_host,logged_at
+20260725_094322,get_vla_action,1,1143.1327,simple_inference,call-001,1,local,2026-07-25T09:43:28
+20260725_094322,get_vla_action,2,89.3923,simple_inference,call-002,2,local,2026-07-25T09:43:28
+20260725_094322,get_vla_action,3,87.4552,simple_inference,call-003,3,local,2026-07-25T09:43:28
+20260725_094322,get_vla_action,4,86.6466,simple_inference,call-004,4,local,2026-07-25T09:43:28
+20260725_094322,get_vla_action,5,87.3594,simple_inference,call-005,5,local,2026-07-25T09:43:28
+20260725_094322,get_vla_action,6,87.0616,simple_inference,call-006,6,local,2026-07-25T09:43:29
+20260725_094322,get_vla_action,7,87.2445,simple_inference,call-007,7,local,2026-07-25T09:43:29
+20260725_094322,get_vla_action,8,86.8567,simple_inference,call-008,8,local,2026-07-25T09:43:29
+20260725_094322,get_vla_action,9,86.7913,simple_inference,call-009,9,local,2026-07-25T09:43:29
+20260725_094322,get_vla_action,10,87.1889,simple_inference,call-010,10,local,2026-07-25T09:43:29
