@@ -117,14 +117,18 @@ class PerformanceProfiler:
 class OperationSampleWriter:
     output_dir: Path
     run_timestamp: str
+    filename: str = "server_operation_metrics.csv"
     _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
 
     def __post_init__(self) -> None:
         self.output_dir = Path(self.output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
+    def csv_path(self) -> Path:
+        return self.output_dir / self.filename
+
     def _csv_path(self) -> Path:
-        return self.output_dir / "server_operation_metrics.csv"
+        return self.csv_path()
 
     def append(self, row: dict[str, Any]) -> None:
         csv_path = self._csv_path()
