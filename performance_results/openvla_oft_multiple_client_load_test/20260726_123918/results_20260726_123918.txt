@@ -1,0 +1,37 @@
+Run directory: /storage/scratch1/5/ccapetola3/forks/openvla/performance_results/openvla_oft_multiple_client_load_test/20260726_123918
+Clients: 2, requests per client: 51
+Performance Test Run - Sun Jul 26 12:39:18 PM EDT 2026
+========================================
+Launching client 1...
+Launching client 2...
+
+========================================
+Fetching profiler report...
+[
+  {
+    "operation": "1_parse_payload",
+    "calls": 97,
+    "mean_ms": 0.0053,
+    "min_ms": 0.0041,
+    "max_ms": 0.0069,
+    "p95_ms": 0.0068
+  },
+  {
+    "operation": "2_run_inference",
+    "calls": 97,
+    "mean_ms": 189.1473,
+    "min_ms": 184.0674,
+    "max_ms": 192.1963,
+    "p95_ms": 191.3013
+  },
+  {
+    "operation": "3_return_action",
+    "calls": 97,
+    "mean_ms": 0.0027,
+    "min_ms": 0.0023,
+    "max_ms": 0.0034,
+    "p95_ms": 0.0033
+  }
+]
+
+Test completed at Sun Jul 26 12:39:29 PM EDT 2026

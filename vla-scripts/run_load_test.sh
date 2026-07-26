@@ -6,12 +6,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-OUTPUT_DIR="${OUTPUT_DIR:-$REPO_ROOT/performance_results/openvla_oft_load_test/$TIMESTAMP}"
+OUTPUT_DIR="${OUTPUT_DIR:-$REPO_ROOT/performance_results/openvla_oft_multiple_client_load_test/$TIMESTAMP}"
 OUTPUT_FILE="$OUTPUT_DIR/results_${TIMESTAMP}.txt"
 SERVER_URL="${SERVER_URL:-http://0.0.0.0:8777/act}"
 SERVER_PROFILER_URL="${SERVER_PROFILER_URL:-${SERVER_URL%/act}/profiler}"
-NUM_CLIENTS="${NUM_CLIENTS:-5}"
-REQUESTS_PER_CLIENT="${REQUESTS_PER_CLIENT:-10}"
+NUM_CLIENTS="${NUM_CLIENTS:-2}"
+REQUESTS_PER_CLIENT="${REQUESTS_PER_CLIENT:-51}"
 
 export RUN_TIMESTAMP="$TIMESTAMP"
 export RUN_OUTPUT_DIR="$OUTPUT_DIR"
