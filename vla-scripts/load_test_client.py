@@ -20,7 +20,7 @@ def build_payload(instruction: str, unnorm_key: str, image_height: int, image_wi
     return {
         "full_image": np.zeros((image_height, image_width, 3), dtype=np.uint8),
         "left_wrist_image": np.zeros((image_height, image_width, 3), dtype=np.uint8),
-        "right_wrist_image": np.zeros((image_height, image_width, 3), dtype=np.uint8),
+        # "right_wrist_image": np.zeros((image_height, image_width, 3), dtype=np.uint8),
         "state": np.zeros((state_dim,), dtype=np.float32),
         "instruction": instruction,
         "unnorm_key": unnorm_key,
@@ -40,7 +40,7 @@ def header_float(response: requests.Response, header_name: str) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run repeated OpenVLA requests and log client-side latency.")
     parser.add_argument("--client-id", type=int, required=True, help="Numeric client identifier.")
-    parser.add_argument("--num-requests", type=int, default=10, help="Number of back-to-back requests to send.")
+    parser.add_argument("--num-requests", type=int, default=61, help="Number of back-to-back requests to send.")
     parser.add_argument(
         "--server-url",
         default=os.environ.get("OPENVLA_SERVER_URL", "http://0.0.0.0:8777/act"),
