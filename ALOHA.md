@@ -148,6 +148,54 @@ python experiments/robot/aloha/run_aloha_eval.py \
 
 If you run into any issues, please open a new GitHub issue.
 
+## Runtime Model Switching (Perf Testing)
+
+The VLA server also exposes `POST /load_model`, which hot-swaps the currently-loaded model for a
+different one without restarting the process. This is intended for studying the performance cost of
+switching models mid-session (e.g. how expensive is a swap, and how does the first inference after a
+swap compare to steady-state), not for production use. See [MODEL_SWITCH_TESTING.md](MODEL_SWITCH_TESTING.md)
+for a full guide to running these tests and interpreting the resulting metrics.
+
+The request body is a partial override of the same fields accepted by `deploy.py`'s CLI (`pretrained_checkpoint`,
+`unnorm_key`, `use_l1_regression`, `use_diffusion`, `use_film`, `num_images_in_input`, `use_proprio`,
+`center_crop`, `lora_rank`, `load_in_8bit`, `load_in_4bit`, ...) — any field you omit keeps its
+current value. For example:
+
+```bash
+curl -X POST http://<VLA SERVER URL>/load_model \
+  -H "Content-Type: application/json" \
+  -d '{"pretrained_checkpoint": "/PATH/TO/OTHER/CHECKPOINT/DIR/", "unnorm_key": "some_other_dataset"}'
+```
+
+The response is a JSON breakdown of how long the swap took, split into `teardown_ms` (freeing the old
+model from GPU memory) and per-component load timings (`load_vla_ms`, `load_proprio_projector_ms`,
+`load_action_head_ms`, `load_processor_ms`, `load_resize_size_ms`, `load_total_ms`), plus `swap_total_ms`
+for the whole operation. These same operations also show up as `model_load_*`/`model_teardown` entries
+in the existing `GET /profiler` and `GET /profiler/full` endpoints, and (if `RUN_OUTPUT_DIR` is set when
+launching the server) are logged to `model_switch_metrics.csv` in that directory.
+
+To exercise this end-to-end and measure pre-swap vs. post-swap `/act` latency, use
+[`vla-scripts/model_switch_test_client.py`](vla-scripts/model_switch_test_client.py) (or the orchestrator
+[`vla-scripts/run_model_switch_test.sh`](vla-scripts/run_model_switch_test.sh), which mirrors
+`run_load_test.sh`'s env-var-driven conventions):
+
+```bash
+MODEL_B_CHECKPOINT=/PATH/TO/OTHER/CHECKPOINT/DIR/ \
+MODEL_B_UNNORM_KEY=some_other_dataset \
+./vla-scripts/run_model_switch_test.sh
+```
+
+This sends a batch of baseline `/act` requests, calls `/load_model`, then sends a batch of post-swap
+`/act` requests with the very first one tagged `post_swap_first` (vs. `post_swap_steady` for the rest)
+in the output CSV, so the cold first-inference-after-swap cost is visible separately from steady-state.
+
+**Known constraint**: `get_proprio_projector`/`get_action_head` in
+[`experiments/robot/openvla_utils.py`](experiments/robot/openvla_utils.py) only recognize a fixed list of
+5 `moojink/openvla-7b-oft-finetuned-libero-*` Hugging Face Hub checkpoints for downloading their
+respective components. To demo a swap between two models that both use a proprio projector and/or action
+head, use either two of those 5 known HF Hub checkpoints or two local checkpoint directories (which work
+generically via `find_checkpoint_file`).
+
 ## Troubleshooting Tips
 
 * Tip #1: If you run into a ROS error such as `ImportError: /lib/x86_64-linux-gnu/libp11-kit.so.0: undefined symbol: ffi_type_pointer, version LIBFFI_BASE_7.0`, try running the following command in your client conda environment (`openvla-oft-aloha`):

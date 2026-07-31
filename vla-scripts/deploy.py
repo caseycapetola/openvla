@@ -7,6 +7,7 @@ Also exposes lightweight profiling endpoints used for inference performance test
 
 import contextlib
 import csv
+import dataclasses
 import json
 import logging
 import os.path
@@ -229,6 +230,69 @@ class RequestLogWriter:
             )
 
 
+@dataclass
+class ModelSwitchLogWriter:
+    output_dir: Path
+    run_timestamp: str
+    filename: str = "model_switch_metrics.csv"
+    _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
+
+    def __post_init__(self) -> None:
+        self.output_dir = Path(self.output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def csv_path(self) -> Path:
+        return self.output_dir / self.filename
+
+    def append(self, row: dict[str, Any]) -> None:
+        csv_path = self.csv_path()
+        file_exists = csv_path.exists()
+
+        with self._lock, open(csv_path, "a", newline="") as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(
+                    [
+                        "run_timestamp",
+                        "switch_id",
+                        "status",
+                        "old_checkpoint",
+                        "new_checkpoint",
+                        "teardown_ms",
+                        "load_vla_ms",
+                        "load_proprio_projector_ms",
+                        "load_action_head_ms",
+                        "load_processor_ms",
+                        "load_resize_size_ms",
+                        "load_total_ms",
+                        "swap_total_ms",
+                        "client_host",
+                        "error",
+                        "logged_at",
+                    ]
+                )
+            writer.writerow(
+                [
+                    self.run_timestamp,
+                    row.get("switch_id", ""),
+                    row.get("status", "ok"),
+                    row.get("old_checkpoint", ""),
+                    row.get("new_checkpoint", ""),
+                    row.get("teardown_ms", 0.0),
+                    row.get("load_vla_ms", 0.0),
+                    row.get("load_proprio_projector_ms", 0.0),
+                    row.get("load_action_head_ms", 0.0),
+                    row.get("load_processor_ms", 0.0),
+                    row.get("load_resize_size_ms", 0.0),
+                    row.get("load_total_ms", 0.0),
+                    row.get("swap_total_ms", 0.0),
+                    row.get("client_host", ""),
+                    row.get("error", ""),
+                    datetime.now().isoformat(timespec="seconds"),
+                ]
+            )
+
+
 # === Server Interface ===
 class OpenVLAServer:
     def __init__(self, cfg) -> Path:
@@ -237,39 +301,72 @@ class OpenVLAServer:
         """
         self.cfg = cfg
 
-        # Load model
-        self.vla = get_vla(cfg)
-
-        # Load proprio projector
-        self.proprio_projector = None
-        if cfg.use_proprio:
-            self.proprio_projector = get_proprio_projector(cfg, self.vla.llm_dim, PROPRIO_DIM)
-
-        # Load continuous action head
-        self.action_head = None
-        if cfg.use_l1_regression or cfg.use_diffusion:
-            self.action_head = get_action_head(cfg, self.vla.llm_dim)
-
-        # Check that the model contains the action un-normalization key
-        assert cfg.unnorm_key in self.vla.norm_stats, f"Action un-norm key {cfg.unnorm_key} not found in VLA `norm_stats`!"
-
-        # Get Hugging Face processor
-        self.processor = None
-        self.processor = get_processor(cfg)
-
-        # Get expected image dimensions
-        self.resize_size = get_image_resize_size(cfg)
+        # Guards self.vla/self.action_head/self.proprio_projector/self.processor/self.cfg so that `/act`
+        # and `/load_model` can't run concurrently. A plain `threading.Lock` (not `asyncio.Lock`) is correct
+        # here because `get_server_action`/`load_model` are sync `def` handlers, and Starlette/uvicorn runs
+        # sync FastAPI handlers in a thread-pool executor -- concurrent requests genuinely run on separate
+        # OS threads.
+        self._model_lock = threading.Lock()
+        self._switch_counter = 0
 
         perf_output_dir = os.environ.get("RUN_OUTPUT_DIR")
         perf_run_timestamp = os.environ.get("RUN_TIMESTAMP", datetime.now().strftime("%Y%m%d_%H%M%S"))
         self.request_logger = None
         self.sample_logger = None
+        self.switch_logger = None
         if perf_output_dir is not None:
             perf_output_path = Path(perf_output_dir)
             self.request_logger = RequestLogWriter(perf_output_path, perf_run_timestamp)
             self.sample_logger = OperationSampleWriter(perf_output_path, perf_run_timestamp)
+            self.switch_logger = ModelSwitchLogWriter(perf_output_path, perf_run_timestamp)
 
         self.profiler = PerformanceProfiler(sample_writer=self.sample_logger)
+
+        # Load model + associated components
+        self._load_model_components(cfg, context={"phase": "startup"})
+
+    def _load_model_components(self, cfg, context: Optional[dict[str, Any]] = None) -> None:
+        """
+        Loads the VLA model, proprio projector, action head, processor, and resize size for `cfg` onto
+        `self`. Instrumented per sub-stage so both server startup and a runtime model swap (via
+        `/load_model`) share identical profiling.
+        """
+        ctx = context or {}
+
+        # Load model
+        with self.profiler.measure("model_load_vla", context=ctx):
+            self.vla = get_vla(cfg)
+
+        # Load proprio projector
+        self.proprio_projector = None
+        if cfg.use_proprio:
+            with self.profiler.measure("model_load_proprio_projector", context=ctx):
+                self.proprio_projector = get_proprio_projector(cfg, self.vla.llm_dim, PROPRIO_DIM)
+
+        # Load continuous action head
+        self.action_head = None
+        if cfg.use_l1_regression or cfg.use_diffusion:
+            with self.profiler.measure("model_load_action_head", context=ctx):
+                self.action_head = get_action_head(cfg, self.vla.llm_dim)
+
+        # Check that the model contains the action un-normalization key
+        assert cfg.unnorm_key in self.vla.norm_stats, f"Action un-norm key {cfg.unnorm_key} not found in VLA `norm_stats`!"
+
+        # Get Hugging Face processor
+        with self.profiler.measure("model_load_processor", context=ctx):
+            self.processor = get_processor(cfg)
+
+        # Get expected image dimensions
+        with self.profiler.measure("model_load_resize_size", context=ctx):
+            self.resize_size = get_image_resize_size(cfg)
+
+        self.cfg = cfg
+
+    def _teardown_model_components(self, context: Optional[dict[str, Any]] = None) -> None:
+        """Frees the currently-loaded model components from GPU memory, timed as its own profiled span."""
+        with self.profiler.measure("model_teardown", context=context or {}):
+            del self.vla, self.action_head, self.proprio_projector, self.processor
+            torch.cuda.empty_cache()
 
     def get_server_action(self, payload: Dict[str, Any], request: Request) -> str:
         client_id = request.headers.get("x-client-id", "unknown")
@@ -318,16 +415,18 @@ class OpenVLAServer:
             with self.profiler.measure("2_run_inference", context=operation_context):
                 inference_start = time.perf_counter()
                 try:
-                    action = get_vla_action(
-                        self.cfg,
-                        self.vla,
-                        self.processor,
-                        observation,
-                        instruction,
-                        action_head=self.action_head,
-                        proprio_projector=self.proprio_projector,
-                        use_film=self.cfg.use_film,
-                    )
+                    # Block while a `/load_model` swap is in-flight, and vice versa.
+                    with self._model_lock:
+                        action = get_vla_action(
+                            self.cfg,
+                            self.vla,
+                            self.processor,
+                            observation,
+                            instruction,
+                            action_head=self.action_head,
+                            proprio_projector=self.proprio_projector,
+                            use_film=self.cfg.use_film,
+                        )
                 finally:
                     inference_ms = round((time.perf_counter() - inference_start) * 1000, 4)
 
@@ -372,6 +471,79 @@ class OpenVLAServer:
                     }
                 )
 
+    def load_model(self, payload: Dict[str, Any], request: Request) -> JSONResponse:
+        """
+        Hot-swaps the currently-loaded model for a different one, described as a partial override of the
+        server's `DeployConfig` (any field may be omitted, in which case it keeps its current value).
+        Tears down the old model (freeing GPU memory) before loading the new one, with both phases timed
+        and broken down into sub-stages via the existing `PerformanceProfiler` machinery.
+        """
+        client_host = request.client.host if request.client is not None else ""
+        swap_start = time.perf_counter()
+
+        with self._model_lock:
+            self._switch_counter += 1
+            switch_id = f"switch-{self._switch_counter:03d}"
+            ctx = {
+                "client_id": "admin",
+                "request_id": switch_id,
+                "request_index": self._switch_counter,
+                "client_host": client_host,
+            }
+
+            old_checkpoint = str(self.cfg.pretrained_checkpoint)
+            overrides = {k: v for k, v in payload.items() if v is not None}
+
+            try:
+                new_cfg = dataclasses.replace(self.cfg, **overrides)
+            except TypeError as exc:
+                return JSONResponse(content={"error": f"invalid override keys: {exc}"}, status_code=400)
+
+            status = "ok"
+            error_text = ""
+            teardown_ms = 0.0
+            load_total_ms = 0.0
+            try:
+                teardown_start = time.perf_counter()
+                self._teardown_model_components(context=ctx)
+                teardown_ms = round((time.perf_counter() - teardown_start) * 1000, 4)
+
+                load_start = time.perf_counter()
+                self._load_model_components(new_cfg, context=ctx)
+                load_total_ms = round((time.perf_counter() - load_start) * 1000, 4)
+            except Exception:  # noqa: BLE001
+                status = "error"
+                error_text = traceback.format_exc()
+                logging.error(error_text)
+            finally:
+                swap_total_ms = round((time.perf_counter() - swap_start) * 1000, 4)
+
+                def last_sample(operation: str) -> float:
+                    stats = self.profiler._stats.get(operation)
+                    return stats.samples[-1] if stats and stats.samples else 0.0
+
+                row = {
+                    "switch_id": switch_id,
+                    "status": status,
+                    "old_checkpoint": old_checkpoint,
+                    "new_checkpoint": str(new_cfg.pretrained_checkpoint) if status == "ok" else old_checkpoint,
+                    "teardown_ms": round(teardown_ms, 4),
+                    "load_vla_ms": round(last_sample("model_load_vla"), 4),
+                    "load_proprio_projector_ms": round(last_sample("model_load_proprio_projector"), 4),
+                    "load_action_head_ms": round(last_sample("model_load_action_head"), 4),
+                    "load_processor_ms": round(last_sample("model_load_processor"), 4),
+                    "load_resize_size_ms": round(last_sample("model_load_resize_size"), 4),
+                    "load_total_ms": round(load_total_ms, 4),
+                    "swap_total_ms": swap_total_ms,
+                    "client_host": client_host,
+                    "error": error_text[-500:],
+                }
+                if self.switch_logger is not None:
+                    self.switch_logger.append(row)
+
+        status_code = 200 if status == "ok" else 500
+        return JSONResponse(content=row, status_code=status_code)
+
     def get_profiler_report(self) -> list[dict[str, Any]]:
         return self.profiler.report()
 
@@ -381,6 +553,7 @@ class OpenVLAServer:
     def run(self, host: str = "0.0.0.0", port: int = 8777) -> None:
         self.app = FastAPI()
         self.app.post("/act")(self.get_server_action)
+        self.app.post("/load_model")(self.load_model)
         self.app.get("/profiler")(self.get_profiler_report)
         self.app.get("/profiler/full")(self.get_profiler_full_report)
         uvicorn.run(self.app, host=host, port=port)
