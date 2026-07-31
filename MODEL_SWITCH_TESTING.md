@@ -71,7 +71,7 @@ python vla-scripts/deploy.py \
   --use_l1_regression True \
   --use_proprio True \
   --center_crop True \
-  --unnorm_key libero_spatial_no_noops
+  --unnorm_key libero_goal_no_noops
 ```
 
 **2. Run the switch test** from the client machine/shell against that server:
