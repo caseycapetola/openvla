@@ -8,6 +8,55 @@ The goal of this testing is to measure the cost of swapping the loaded model mid
 into teardown + per-component load latency) and to see whether the first inference after a swap is
 slower than steady-state.
 
+## Pre-downloading checkpoints
+
+For repeatable testing it's best to download the checkpoints you want to swap between ahead of time and
+reference their local paths, rather than pointing `--pretrained_checkpoint`/`MODEL_B_CHECKPOINT` at a
+Hugging Face repo ID and re-downloading (or hitting the Hub) on every run.
+
+This also sidesteps a real limitation: `model_is_on_hf_hub()`
+(`experiments/robot/openvla_utils.py:46-53`) decides "local vs. Hub" by calling
+`HfApi().model_info(pretrained_checkpoint)`, which only succeeds for a valid repo ID string, not a
+filesystem path. Once `--pretrained_checkpoint` points at a local directory, the loader takes the
+"local" branch everywhere, including in `get_proprio_projector`/`get_action_head` — which otherwise only
+know how to fetch components for 5 hardcoded `moojink/openvla-7b-oft-finetuned-libero-*` repo IDs. The
+local branch instead uses `find_checkpoint_file()`, which pattern-matches any file in the directory
+containing `"proprio_projector"`/`"action_head"`/`"vision_backbone"` + `"checkpoint"`. **Downloading
+locally lets you swap between any two checkpoints, not just those 5 known ones.**
+
+Download with the `hf` CLI (ships with `huggingface_hub`; `huggingface-cli download` is the older alias
+for the same command):
+
+```bash
+mkdir -p ~/vla_checkpoints
+
+hf download moojink/openvla-7b-oft-finetuned-libero-spatial \
+  --local-dir ~/vla_checkpoints/libero-spatial
+
+hf download moojink/openvla-7b-oft-finetuned-libero-goal \
+  --local-dir ~/vla_checkpoints/libero-goal
+```
+
+This pulls down `config.json`, the model weights, processor files, `dataset_statistics.json`, and the
+`proprio_projector--*.pt`/`action_head--*.pt` component files — everything `get_vla`/
+`get_proprio_projector`/`get_action_head` need — as real files directly under `--local-dir` (recent
+`huggingface_hub` versions don't symlink into the cache by default). Each OpenVLA-7B checkpoint is
+roughly 15-16 GB in bf16, so budget disk space accordingly; `du -sh ~/vla_checkpoints/*` after
+downloading is a good sanity check. The `check_model_logic_mismatch`/`update_auto_map` steps in `get_vla`
+run automatically for local checkpoints (syncing `modeling_prismatic.py`/`configuration_prismatic.py`
+into the checkpoint dir if needed) — nothing extra required there.
+
+**Verify the `unnorm_key` before running**: it must exist in that checkpoint's `dataset_statistics.json`.
+
+```bash
+python -c "import json; print(list(json.load(open('~/vla_checkpoints/libero-spatial/dataset_statistics.json')).keys()))"
+```
+
+Once downloaded, reference the local paths directly in place of `/PATH/TO/MODEL_A/`,
+`/PATH/TO/MODEL_B/`, `MODEL_A_CHECKPOINT`, and `MODEL_B_CHECKPOINT` in the steps below — no code changes
+needed, the client/server scripts just pass whatever string you give them straight through to
+`pretrained_checkpoint`.
+
 ## Running the test
 
 **1. Start the server with model A** (on the GPU machine, `openvla-oft` conda env). Set `RUN_OUTPUT_DIR`
@@ -18,19 +67,19 @@ export RUN_OUTPUT_DIR=performance_results/openvla_oft_model_switch_test/manual_r
 export RUN_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 python vla-scripts/deploy.py \
-  --pretrained_checkpoint /PATH/TO/MODEL_A/ \
+  --pretrained_checkpoint /storage/scratch1/5/ccapetola3/vla_checkpoints/libero-goal \
   --use_l1_regression True \
   --use_proprio True \
   --center_crop True \
-  --unnorm_key model_a_dataset_key
+  --unnorm_key libero_spatial_no_noops
 ```
 
 **2. Run the switch test** from the client machine/shell against that server:
 
 ```bash
-MODEL_B_CHECKPOINT=/PATH/TO/MODEL_B/ \
-MODEL_B_UNNORM_KEY=model_b_dataset_key \
-MODEL_A_CHECKPOINT=/PATH/TO/MODEL_A/ \
+MODEL_B_CHECKPOINT=/storage/scratch1/5/ccapetola3/vla_checkpoints/libero-spatial \
+MODEL_B_UNNORM_KEY=libero_spatial_no_noops \
+MODEL_A_CHECKPOINT=/storage/scratch1/5/ccapetola3/vla_checkpoints/libero-goal \
 SERVER_URL=http://<server-host>:8777 \
 PRE_SWAP_REQUESTS=30 \
 POST_SWAP_REQUESTS=30 \
