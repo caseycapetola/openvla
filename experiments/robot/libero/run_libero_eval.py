@@ -28,7 +28,8 @@ import numpy as np
 import tqdm
 from libero.libero import benchmark
 
-import wandb
+# NOTE: `wandb` is imported lazily inside `eval_libero` (only when `cfg.use_wandb` is set). W&B is optional telemetry
+# and is not on the critical path, so a broken or absent W&B install must not be able to break a local-only eval run.
 
 # Append current directory so that interpreter can find experiments.robot
 sys.path.append("../..")
@@ -130,6 +131,10 @@ def eval_libero(cfg: GenerateConfig) -> None:
 
     # Initialize Weights & Biases logging as well
     if cfg.use_wandb:
+        # Imported here rather than at module scope: this binds `wandb` for the rest of this function, and every other
+        # use below is likewise guarded by `cfg.use_wandb`, so local-only runs never touch the package.
+        import wandb
+
         wandb.init(
             entity=cfg.wandb_entity,
             project=cfg.wandb_project,
