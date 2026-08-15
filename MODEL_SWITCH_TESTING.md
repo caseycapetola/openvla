@@ -80,7 +80,7 @@ python vla-scripts/deploy.py \
 MODEL_B_CHECKPOINT=/storage/scratch1/5/ccapetola3/vla_checkpoints/libero-spatial \
 MODEL_B_UNNORM_KEY=libero_spatial_no_noops \
 MODEL_A_CHECKPOINT=/storage/scratch1/5/ccapetola3/vla_checkpoints/libero-goal \
-SERVER_URL=http://<server-host>:8777 \
+SERVER_URL=http://localhost:8777 \
 PRE_SWAP_REQUESTS=30 \
 POST_SWAP_REQUESTS=30 \
 ./vla-scripts/run_model_switch_test.sh
