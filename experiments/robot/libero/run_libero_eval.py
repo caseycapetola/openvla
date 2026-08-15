@@ -49,6 +49,7 @@ from experiments.robot.robot_utils import (
     normalize_gripper_action,
     set_seed_everywhere,
 )
+from experiments.robot.telemetry import EPISODE_COLUMNS, EvalTelemetry
 
 
 @dataclass
@@ -124,6 +125,8 @@ def eval_libero(cfg: GenerateConfig) -> None:
     local_log_filepath = os.path.join(cfg.local_log_dir, run_id + ".txt")
     log_file = open(local_log_filepath, "w")
     print(f"Logging to local log file: {local_log_filepath}")
+    local_csv_filepath = os.path.join(cfg.local_log_dir, run_id + ".csv")
+    print(f"Logging per-episode telemetry to: {local_csv_filepath}")
 
     # Initialize Weights & Biases logging as well
     if cfg.use_wandb:
@@ -131,6 +134,9 @@ def eval_libero(cfg: GenerateConfig) -> None:
             entity=cfg.wandb_entity,
             project=cfg.wandb_project,
             name=run_id,
+            # `vars()` rather than `dataclasses.asdict()` so the dynamically-attached `cfg.unnorm_key` is included.
+            # Latency numbers are not comparable across runs without the checkpoint / quantization / crop settings.
+            config=vars(cfg),
         )
 
     # Initialize LIBERO task suite
@@ -142,6 +148,10 @@ def eval_libero(cfg: GenerateConfig) -> None:
 
     # Get expected image dimensions
     resize_size = get_image_resize_size(cfg)
+
+    # Initialize telemetry (pure observer: latency / step counts / inference invocations)
+    # The CSV sidecar holds one row per episode and is flushed per episode, so an interrupted run keeps its rows.
+    telemetry = EvalTelemetry(csv_path=local_csv_filepath)
 
     # Start evaluation
     total_episodes, total_successes = 0, 0
@@ -157,6 +167,7 @@ def eval_libero(cfg: GenerateConfig) -> None:
 
         # Start episodes
         task_episodes, task_successes = 0, 0
+        telemetry.start_task()
         for episode_idx in tqdm.tqdm(range(cfg.num_trials_per_task)):
             print(f"\nTask: {task_description}")
             log_file.write(f"\nTask: {task_description}\n")
@@ -183,17 +194,21 @@ def eval_libero(cfg: GenerateConfig) -> None:
 
             print(f"Starting episode {task_episodes+1}...")
             log_file.write(f"Starting episode {task_episodes+1}...\n")
+            # Start the episode clock here so it covers exactly the timestep loop (not env reset / init-state setup)
+            telemetry.start_episode()
             while t < max_steps + cfg.num_steps_wait:
                 try:
                     # IMPORTANT: Do nothing for the first few timesteps because the simulator drops objects
                     # and we need to wait for them to fall
                     if t < cfg.num_steps_wait:
-                        obs, reward, done, info = env.step(get_libero_dummy_action(cfg.model_family))
+                        with telemetry.measure("env_step_wait"):
+                            obs, reward, done, info = env.step(get_libero_dummy_action(cfg.model_family))
                         t += 1
                         continue
 
                     # Get preprocessed image
-                    img = get_libero_image(obs, resize_size)
+                    with telemetry.measure("image_prep"):
+                        img = get_libero_image(obs, resize_size)
 
                     # Save preprocessed image for replay video
                     replay_images.append(img)
@@ -208,13 +223,16 @@ def eval_libero(cfg: GenerateConfig) -> None:
                     }
 
                     # Query model to get action
-                    action = get_action(
-                        cfg,
-                        model,
-                        observation,
-                        task_description,
-                        processor=processor,
-                    )
+                    # Timed at the `get_action` dispatcher (family-agnostic), so this covers any future model family.
+                    # Note this folds prompt construction / center-crop into the number; see docs/telemetry_extension.md
+                    with telemetry.measure("inference"):
+                        action = get_action(
+                            cfg,
+                            model,
+                            observation,
+                            task_description,
+                            processor=processor,
+                        )
 
                     # Normalize gripper action [0,1] -> [-1,+1] because the environment expects the latter
                     action = normalize_gripper_action(action, binarize=True)
@@ -225,7 +243,8 @@ def eval_libero(cfg: GenerateConfig) -> None:
                         action = invert_gripper_action(action)
 
                     # Execute action in environment
-                    obs, reward, done, info = env.step(action.tolist())
+                    with telemetry.measure("env_step"):
+                        obs, reward, done, info = env.step(action.tolist())
                     if done:
                         task_successes += 1
                         total_successes += 1
@@ -235,10 +254,20 @@ def eval_libero(cfg: GenerateConfig) -> None:
                 except Exception as e:
                     print(f"Caught exception: {e}")
                     log_file.write(f"Caught exception: {e}\n")
+                    telemetry.note_error(repr(e))
                     break
 
             task_episodes += 1
             total_episodes += 1
+
+            # Close out episode telemetry before the rollout video is written, so MP4 disk I/O is excluded
+            telemetry.end_episode(
+                task_id=task_id,
+                task_description=task_description,
+                episode_idx=episode_idx,
+                global_episode_idx=total_episodes,
+                success=bool(done),
+            )
 
             # Save a replay video of the episode
             save_rollout_video(
@@ -252,6 +281,8 @@ def eval_libero(cfg: GenerateConfig) -> None:
             log_file.write(f"Success: {done}\n")
             log_file.write(f"# episodes completed so far: {total_episodes}\n")
             log_file.write(f"# successes: {total_successes} ({total_successes / total_episodes * 100:.1f}%)\n")
+            print(telemetry.last_episode_summary())
+            log_file.write(telemetry.last_episode_summary() + "\n")
             log_file.flush()
 
         # Log final results
@@ -265,11 +296,15 @@ def eval_libero(cfg: GenerateConfig) -> None:
                 {
                     f"success_rate/{task_description}": float(task_successes) / float(task_episodes),
                     f"num_episodes/{task_description}": task_episodes,
+                    **telemetry.task_metrics(task_description),
                 }
             )
 
-    # Save local log file
+    # Save local log file (written before close, since the log file is closed ahead of the final W&B flush)
+    print(telemetry.run_summary())
+    log_file.write(telemetry.run_summary())
     log_file.close()
+    telemetry.close()
 
     # Push total metrics and local log file to wandb
     if cfg.use_wandb:
@@ -277,9 +312,15 @@ def eval_libero(cfg: GenerateConfig) -> None:
             {
                 "success_rate/total": float(total_successes) / float(total_episodes),
                 "num_episodes/total": total_episodes,
+                **telemetry.run_metrics(),
+                # Per-episode detail rides along as a single table instead of per-step `wandb.log` calls, keeping the
+                # network hops at one-per-task plus one-at-the-end.
+                "episodes": wandb.Table(columns=EPISODE_COLUMNS, data=telemetry.episode_rows()),
             }
         )
         wandb.save(local_log_filepath)
+        wandb.save(local_csv_filepath)
+        wandb.finish()
 
 
 if __name__ == "__main__":
