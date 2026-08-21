@@ -53,9 +53,13 @@ To start evaluations with one of the independently trained checkpoints, run one 
 
 ```bash
 # Launch LIBERO-Spatial evals
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+export MUJOCO_GL=egl
+export PYTHONPATH=/home/caseycapetola/omscs/8903/forks/openvla
 python experiments/robot/libero/run_libero_eval.py \
   --pretrained_checkpoint moojink/openvla-7b-oft-finetuned-libero-spatial \
-  --task_suite_name libero_spatial
+  --task_suite_name libero_spatial \
+  --load_in_8bit True
 
 # Launch LIBERO-Object evals
 python experiments/robot/libero/run_libero_eval.py \

@@ -47,6 +47,7 @@ from experiments.robot.robot_utils import (
     normalize_gripper_action,
     set_seed_everywhere,
 )
+from experiments.robot.telemetry import EPISODE_COLUMNS, EvalTelemetry
 from prismatic.vla.constants import NUM_ACTIONS_CHUNK
 
 
@@ -205,15 +206,22 @@ def setup_logging(cfg: GenerateConfig):
     log_file = open(local_log_filepath, "w")
     logger.info(f"Logging to local log file: {local_log_filepath}")
 
+    # Per-episode telemetry (latency / step counts / inference invocations) sidecar
+    local_csv_filepath = os.path.join(cfg.local_log_dir, run_id + ".csv")
+    logger.info(f"Logging per-episode telemetry to: {local_csv_filepath}")
+
     # Initialize Weights & Biases logging if enabled
     if cfg.use_wandb:
         wandb.init(
             entity=cfg.wandb_entity,
             project=cfg.wandb_project,
             name=run_id,
+            # `vars()` rather than `dataclasses.asdict()` so the dynamically-attached `cfg.unnorm_key` is included.
+            # Latency numbers are not comparable across runs without the checkpoint / quantization / crop settings.
+            config=vars(cfg),
         )
 
-    return log_file, local_log_filepath, run_id
+    return log_file, local_log_filepath, local_csv_filepath, run_id
 
 
 def log_message(message: str, log_file=None):
@@ -281,6 +289,7 @@ def run_episode(
     task_description: str,
     model,
     resize_size,
+    telemetry: EvalTelemetry,
     processor=None,
     action_head=None,
     proprio_projector=None,
@@ -312,32 +321,40 @@ def run_episode(
 
     # Run episode
     success = False
+    # Start the episode clock here so it covers exactly the timestep loop (not env reset / init-state setup)
+    telemetry.start_episode()
     try:
         while t < max_steps + cfg.num_steps_wait:
             # Do nothing for the first few timesteps to let objects stabilize
             if t < cfg.num_steps_wait:
-                obs, reward, done, info = env.step(get_libero_dummy_action(cfg.model_family))
+                with telemetry.measure("env_step_wait"):
+                    obs, reward, done, info = env.step(get_libero_dummy_action(cfg.model_family))
                 t += 1
                 continue
 
             # Prepare observation
-            observation, img = prepare_observation(obs, resize_size)
+            with telemetry.measure("image_prep"):
+                observation, img = prepare_observation(obs, resize_size)
             replay_images.append(img)
 
             # If action queue is empty, requery model
             if len(action_queue) == 0:
                 # Query model to get action
-                actions = get_action(
-                    cfg,
-                    model,
-                    observation,
-                    task_description,
-                    processor=processor,
-                    action_head=action_head,
-                    proprio_projector=proprio_projector,
-                    noisy_action_projector=noisy_action_projector,
-                    use_film=cfg.use_film,
-                )
+                # Timed at the family-agnostic `get_action` dispatcher. With action chunking (OFT), this call
+                # produces `NUM_ACTIONS_CHUNK` actions at once, so `inference` calls and `env_step` calls diverge --
+                # telemetry tracks them as separate operations rather than assuming a 1:1 relationship.
+                with telemetry.measure("inference"):
+                    actions = get_action(
+                        cfg,
+                        model,
+                        observation,
+                        task_description,
+                        processor=processor,
+                        action_head=action_head,
+                        proprio_projector=proprio_projector,
+                        noisy_action_projector=noisy_action_projector,
+                        use_film=cfg.use_film,
+                    )
                 action_queue.extend(actions)
 
             # Get action from queue
@@ -347,7 +364,8 @@ def run_episode(
             action = process_action(action, cfg.model_family)
 
             # Execute action in environment
-            obs, reward, done, info = env.step(action.tolist())
+            with telemetry.measure("env_step"):
+                obs, reward, done, info = env.step(action.tolist())
             if done:
                 success = True
                 break
@@ -355,6 +373,7 @@ def run_episode(
 
     except Exception as e:
         log_message(f"Episode error: {e}", log_file)
+        telemetry.note_error(repr(e))
 
     return success, replay_images
 
@@ -365,6 +384,7 @@ def run_task(
     task_id: int,
     model,
     resize_size,
+    telemetry: EvalTelemetry,
     processor=None,
     action_head=None,
     proprio_projector=None,
@@ -385,6 +405,7 @@ def run_task(
 
     # Start episodes
     task_episodes, task_successes = 0, 0
+    telemetry.start_task()
     for episode_idx in tqdm.tqdm(range(cfg.num_trials_per_task)):
         log_message(f"\nTask: {task_description}", log_file)
 
@@ -414,6 +435,7 @@ def run_task(
             task_description,
             model,
             resize_size,
+            telemetry,
             processor,
             action_head,
             proprio_projector,
@@ -429,6 +451,15 @@ def run_task(
             task_successes += 1
             total_successes += 1
 
+        # Close out episode telemetry before the rollout video is written, so MP4 disk I/O is excluded
+        telemetry.end_episode(
+            task_id=task_id,
+            task_description=task_description,
+            episode_idx=episode_idx,
+            global_episode_idx=total_episodes,
+            success=success,
+        )
+
         # Save replay video
         save_rollout_video(
             replay_images, total_episodes, success=success, task_description=task_description, log_file=log_file
@@ -438,6 +469,7 @@ def run_task(
         log_message(f"Success: {success}", log_file)
         log_message(f"# episodes completed so far: {total_episodes}", log_file)
         log_message(f"# successes: {total_successes} ({total_successes / total_episodes * 100:.1f}%)", log_file)
+        log_message(telemetry.last_episode_summary(), log_file)
 
     # Log task results
     task_success_rate = float(task_successes) / float(task_episodes) if task_episodes > 0 else 0
@@ -452,6 +484,7 @@ def run_task(
             {
                 f"success_rate/{task_description}": task_success_rate,
                 f"num_episodes/{task_description}": task_episodes,
+                **telemetry.task_metrics(task_description),
             }
         )
 
@@ -474,7 +507,11 @@ def eval_libero(cfg: GenerateConfig) -> float:
     resize_size = get_image_resize_size(cfg)
 
     # Setup logging
-    log_file, local_log_filepath, run_id = setup_logging(cfg)
+    log_file, local_log_filepath, local_csv_filepath, run_id = setup_logging(cfg)
+
+    # Initialize telemetry (pure observer: latency / step counts / inference invocations).
+    # The CSV sidecar holds one row per episode and is flushed per episode, so an interrupted run keeps its rows.
+    telemetry = EvalTelemetry(csv_path=local_csv_filepath)
 
     # Initialize LIBERO task suite
     benchmark_dict = benchmark.get_benchmark_dict()
@@ -492,6 +529,7 @@ def eval_libero(cfg: GenerateConfig) -> float:
             task_id,
             model,
             resize_size,
+            telemetry,
             processor,
             action_head,
             proprio_projector,
@@ -509,6 +547,7 @@ def eval_libero(cfg: GenerateConfig) -> float:
     log_message(f"Total episodes: {total_episodes}", log_file)
     log_message(f"Total successes: {total_successes}", log_file)
     log_message(f"Overall success rate: {final_success_rate:.4f} ({final_success_rate * 100:.1f}%)", log_file)
+    log_message(telemetry.run_summary(), log_file)
 
     # Log to wandb if enabled
     if cfg.use_wandb:
@@ -516,13 +555,20 @@ def eval_libero(cfg: GenerateConfig) -> float:
             {
                 "success_rate/total": final_success_rate,
                 "num_episodes/total": total_episodes,
+                **telemetry.run_metrics(),
+                # Per-episode detail rides along as a single table instead of per-step `wandb.log` calls, keeping the
+                # network hops at one-per-task plus one-at-the-end.
+                "episodes": wandb.Table(columns=EPISODE_COLUMNS, data=telemetry.episode_rows()),
             }
         )
         wandb.save(local_log_filepath)
+        wandb.save(local_csv_filepath)
+        wandb.finish()
 
-    # Close log file
+    # Close log file and telemetry CSV sidecar
     if log_file:
         log_file.close()
+    telemetry.close()
 
     return final_success_rate
 
