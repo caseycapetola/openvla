@@ -1,0 +1,193 @@
+Task suite: libero_spatial
+
+Task: pick up the black bowl between the plate and the ramekin and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=1--success=True--task=pick_up_the_black_bowl_between_the_plate_and_the_r.mp4
+Success: True
+# episodes completed so far: 1
+# successes: 1 (100.0%)
+Steps: 88 | Inference calls: 88 | Duration: 41.48s | Control rate: 2.12 Hz | Inference ms mean/p50/p95/p99: 457.8/450.4/477.7/559.2 | Env step ms mean: 9.4 | Image prep ms mean: 3.0
+
+Task: pick up the black bowl between the plate and the ramekin and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=2--success=True--task=pick_up_the_black_bowl_between_the_plate_and_the_r.mp4
+Success: True
+# episodes completed so far: 2
+# successes: 2 (100.0%)
+Steps: 171 | Inference calls: 171 | Duration: 81.17s | Control rate: 2.11 Hz | Inference ms mean/p50/p95/p99: 462.6/464.7/489.3/500.7 | Env step ms mean: 8.9 | Image prep ms mean: 2.6
+Current task success rate: 1.0
+Current total success rate: 1.0
+
+Task: pick up the black bowl next to the ramekin and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=3--success=True--task=pick_up_the_black_bowl_next_to_the_ramekin_and_pla.mp4
+Success: True
+# episodes completed so far: 3
+# successes: 3 (100.0%)
+Steps: 132 | Inference calls: 132 | Duration: 60.66s | Control rate: 2.18 Hz | Inference ms mean/p50/p95/p99: 446.3/445.0/477.9/494.9 | Env step ms mean: 9.8 | Image prep ms mean: 2.7
+
+Task: pick up the black bowl next to the ramekin and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=4--success=True--task=pick_up_the_black_bowl_next_to_the_ramekin_and_pla.mp4
+Success: True
+# episodes completed so far: 4
+# successes: 4 (100.0%)
+Steps: 110 | Inference calls: 110 | Duration: 50.36s | Control rate: 2.18 Hz | Inference ms mean/p50/p95/p99: 445.3/444.8/461.1/479.1 | Env step ms mean: 9.1 | Image prep ms mean: 2.6
+Current task success rate: 1.0
+Current total success rate: 1.0
+
+Task: pick up the black bowl from table center and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=5--success=True--task=pick_up_the_black_bowl_from_table_center_and_place.mp4
+Success: True
+# episodes completed so far: 5
+# successes: 5 (100.0%)
+Steps: 175 | Inference calls: 175 | Duration: 76.79s | Control rate: 2.28 Hz | Inference ms mean/p50/p95/p99: 426.6/425.4/451.6/484.1 | Env step ms mean: 9.1 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl from table center and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=6--success=True--task=pick_up_the_black_bowl_from_table_center_and_place.mp4
+Success: True
+# episodes completed so far: 6
+# successes: 6 (100.0%)
+Steps: 106 | Inference calls: 106 | Duration: 46.11s | Control rate: 2.30 Hz | Inference ms mean/p50/p95/p99: 422.1/420.5/435.9/443.3 | Env step ms mean: 9.5 | Image prep ms mean: 2.6
+Current task success rate: 1.0
+Current total success rate: 1.0
+
+Task: pick up the black bowl on the cookie box and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=7--success=True--task=pick_up_the_black_bowl_on_the_cookie_box_and_place.mp4
+Success: True
+# episodes completed so far: 7
+# successes: 7 (100.0%)
+Steps: 93 | Inference calls: 93 | Duration: 40.32s | Control rate: 2.31 Hz | Inference ms mean/p50/p95/p99: 420.5/419.4/430.1/459.2 | Env step ms mean: 9.5 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl on the cookie box and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=8--success=True--task=pick_up_the_black_bowl_on_the_cookie_box_and_place.mp4
+Success: True
+# episodes completed so far: 8
+# successes: 8 (100.0%)
+Steps: 106 | Inference calls: 106 | Duration: 46.26s | Control rate: 2.29 Hz | Inference ms mean/p50/p95/p99: 423.6/422.4/441.1/456.3 | Env step ms mean: 9.4 | Image prep ms mean: 2.6
+Current task success rate: 1.0
+Current total success rate: 1.0
+
+Task: pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=9--success=True--task=pick_up_the_black_bowl_in_the_top_drawer_of_the_wo.mp4
+Success: True
+# episodes completed so far: 9
+# successes: 9 (100.0%)
+Steps: 130 | Inference calls: 130 | Duration: 55.57s | Control rate: 2.34 Hz | Inference ms mean/p50/p95/p99: 414.4/413.0/428.8/440.1 | Env step ms mean: 9.7 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=10--success=True--task=pick_up_the_black_bowl_in_the_top_drawer_of_the_wo.mp4
+Success: True
+# episodes completed so far: 10
+# successes: 10 (100.0%)
+Steps: 145 | Inference calls: 145 | Duration: 62.45s | Control rate: 2.32 Hz | Inference ms mean/p50/p95/p99: 417.4/416.3/432.3/453.9 | Env step ms mean: 10.0 | Image prep ms mean: 2.6
+Current task success rate: 1.0
+Current total success rate: 1.0
+
+Task: pick up the black bowl on the ramekin and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=11--success=True--task=pick_up_the_black_bowl_on_the_ramekin_and_place_it.mp4
+Success: True
+# episodes completed so far: 11
+# successes: 11 (100.0%)
+Steps: 99 | Inference calls: 99 | Duration: 42.81s | Control rate: 2.31 Hz | Inference ms mean/p50/p95/p99: 419.5/419.1/429.3/456.6 | Env step ms mean: 9.4 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl on the ramekin and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=12--success=False--task=pick_up_the_black_bowl_on_the_ramekin_and_place_it.mp4
+Success: False
+# episodes completed so far: 12
+# successes: 11 (91.7%)
+Steps: 220 | Inference calls: 220 | Duration: 94.87s | Control rate: 2.32 Hz | Inference ms mean/p50/p95/p99: 417.8/415.8/441.3/451.5 | Env step ms mean: 10.4 | Image prep ms mean: 2.6
+Current task success rate: 0.5
+Current total success rate: 0.9166666666666666
+
+Task: pick up the black bowl next to the cookie box and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=13--success=True--task=pick_up_the_black_bowl_next_to_the_cookie_box_and_.mp4
+Success: True
+# episodes completed so far: 13
+# successes: 12 (92.3%)
+Steps: 106 | Inference calls: 106 | Duration: 45.57s | Control rate: 2.33 Hz | Inference ms mean/p50/p95/p99: 417.3/415.0/433.5/463.4 | Env step ms mean: 9.2 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl next to the cookie box and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=14--success=True--task=pick_up_the_black_bowl_next_to_the_cookie_box_and_.mp4
+Success: True
+# episodes completed so far: 14
+# successes: 13 (92.9%)
+Steps: 100 | Inference calls: 100 | Duration: 42.94s | Control rate: 2.33 Hz | Inference ms mean/p50/p95/p99: 416.7/415.7/430.6/441.6 | Env step ms mean: 9.2 | Image prep ms mean: 2.6
+Current task success rate: 1.0
+Current total success rate: 0.9285714285714286
+
+Task: pick up the black bowl on the stove and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=15--success=True--task=pick_up_the_black_bowl_on_the_stove_and_place_it_o.mp4
+Success: True
+# episodes completed so far: 15
+# successes: 14 (93.3%)
+Steps: 134 | Inference calls: 134 | Duration: 57.63s | Control rate: 2.33 Hz | Inference ms mean/p50/p95/p99: 416.4/413.9/430.3/440.2 | Env step ms mean: 10.4 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl on the stove and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=16--success=False--task=pick_up_the_black_bowl_on_the_stove_and_place_it_o.mp4
+Success: False
+# episodes completed so far: 16
+# successes: 14 (87.5%)
+Steps: 220 | Inference calls: 220 | Duration: 96.67s | Control rate: 2.28 Hz | Inference ms mean/p50/p95/p99: 426.5/419.5/461.9/500.0 | Env step ms mean: 9.8 | Image prep ms mean: 2.6
+Current task success rate: 0.5
+Current total success rate: 0.875
+
+Task: pick up the black bowl next to the plate and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=17--success=True--task=pick_up_the_black_bowl_next_to_the_plate_and_place.mp4
+Success: True
+# episodes completed so far: 17
+# successes: 15 (88.2%)
+Steps: 103 | Inference calls: 103 | Duration: 46.69s | Control rate: 2.21 Hz | Inference ms mean/p50/p95/p99: 440.8/435.8/481.3/495.1 | Env step ms mean: 9.0 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl next to the plate and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=18--success=False--task=pick_up_the_black_bowl_next_to_the_plate_and_place.mp4
+Success: False
+# episodes completed so far: 18
+# successes: 15 (83.3%)
+Steps: 220 | Inference calls: 220 | Duration: 95.85s | Control rate: 2.30 Hz | Inference ms mean/p50/p95/p99: 423.3/422.1/446.9/454.8 | Env step ms mean: 9.3 | Image prep ms mean: 2.6
+Current task success rate: 0.5
+Current total success rate: 0.8333333333333334
+
+Task: pick up the black bowl on the wooden cabinet and place it on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=19--success=True--task=pick_up_the_black_bowl_on_the_wooden_cabinet_and_p.mp4
+Success: True
+# episodes completed so far: 19
+# successes: 16 (84.2%)
+Steps: 123 | Inference calls: 123 | Duration: 53.21s | Control rate: 2.31 Hz | Inference ms mean/p50/p95/p99: 419.3/418.1/434.8/448.6 | Env step ms mean: 9.9 | Image prep ms mean: 2.6
+
+Task: pick up the black bowl on the wooden cabinet and place it on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_18/2026_08_18-21_42_53--episode=20--success=True--task=pick_up_the_black_bowl_on_the_wooden_cabinet_and_p.mp4
+Success: True
+# episodes completed so far: 20
+# successes: 17 (85.0%)
+Steps: 124 | Inference calls: 124 | Duration: 53.70s | Control rate: 2.31 Hz | Inference ms mean/p50/p95/p99: 420.1/419.3/433.0/443.0 | Env step ms mean: 9.6 | Image prep ms mean: 2.6
+Current task success rate: 1.0
+Current total success rate: 0.85
+
+=== Telemetry summary (run) ===
+Episodes: 20
+Total env steps: 2705
+Total inference calls: 2705
+Mean steps per episode: 135.2
+Total time in timestep loop: 1191.1s
+Mean control rate: 2.27 Hz
+Inference ms mean/p50/p95/p99/max: 427.4/421.9/467.5/487.8/917.1
+Inference first call (warm-up) ms: 917.1
+Env step ms mean/p95: 9.6/12.2
+Image prep ms mean/p95: 2.6/2.8
