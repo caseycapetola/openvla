@@ -9,10 +9,10 @@ import logging
 import os
 import sys
 from collections import deque
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Optional, Union
+from typing import List, Optional, Union
 
 import draccus
 import numpy as np
@@ -24,6 +24,7 @@ import wandb
 # Append current directory so that interpreter can find experiments.robot
 sys.path.append("../..")
 from experiments.robot.libero.libero_utils import (
+    apply_action_noise,
     get_libero_dummy_action,
     get_libero_env,
     get_libero_image,
@@ -48,7 +49,7 @@ from experiments.robot.robot_utils import (
     set_seed_everywhere,
 )
 from experiments.robot.telemetry import EPISODE_COLUMNS, EvalTelemetry
-from prismatic.vla.constants import NUM_ACTIONS_CHUNK
+from prismatic.vla.constants import ACTION_DIM, NUM_ACTIONS_CHUNK
 
 
 # Define task suite constants
@@ -117,6 +118,15 @@ class GenerateConfig:
     env_img_res: int = 256                           # Resolution for environment images (not policy input resolution)
 
     #################################################################################################################
+    # Noise injection parameters (for chunking-vs-per-step robustness experiments; see NOISE_ROBUSTNESS_EXPERIMENT.md)
+    #################################################################################################################
+    noise_mode: str = "none"                         # "none", "outlier" (periodic large kick), or "gaussian" (jitter)
+    noise_scale: float = 0.5                         # Noise magnitude, as fraction of each dim's (q99 - q01) data range
+    noise_period: int = 8                             # (If `noise_mode=="outlier"`) inject once every N real env steps
+    noise_dims: List[int] = field(default_factory=lambda: [0, 1, 2, 3, 4, 5])  # Dims to perturb (default: pose only)
+    noise_seed: int = 0                               # Seed for the noise RNG (kept independent of `cfg.seed`)
+
+    #################################################################################################################
     # Utils
     #################################################################################################################
     run_id_note: Optional[str] = None                # Extra note to add to end of run ID for logging
@@ -142,6 +152,12 @@ def validate_config(cfg: GenerateConfig) -> None:
 
     # Validate task suite
     assert cfg.task_suite_name in [suite.value for suite in TaskSuite], f"Invalid task suite: {cfg.task_suite_name}"
+
+    # Validate noise injection parameters
+    assert cfg.noise_mode in ("none", "outlier", "gaussian"), f"Invalid noise_mode: {cfg.noise_mode}"
+    assert cfg.noise_scale >= 0, "noise_scale must be non-negative"
+    assert cfg.noise_period > 0, "noise_period must be positive"
+    assert all(0 <= d < ACTION_DIM for d in cfg.noise_dims), f"noise_dims must all be in [0, {ACTION_DIM})"
 
 
 def initialize_model(cfg: GenerateConfig):
@@ -197,6 +213,11 @@ def setup_logging(cfg: GenerateConfig):
     """Set up logging to file and optionally to wandb."""
     # Create run ID
     run_id = f"EVAL-{cfg.task_suite_name}-{cfg.model_family}-{DATE_TIME}"
+    # Auto-document the chunking-vs-per-step / noise condition so log filenames and W&B run names are
+    # self-explanatory across a comparison sweep, without requiring `--run_id_note` to be set by hand each run.
+    run_id += f"--ol{cfg.num_open_loop_steps}"
+    if cfg.noise_mode != "none":
+        run_id += f"-noise_{cfg.noise_mode}_{cfg.noise_scale}"
     if cfg.run_id_note is not None:
         run_id += f"--{cfg.run_id_note}"
 
@@ -294,6 +315,8 @@ def run_episode(
     action_head=None,
     proprio_projector=None,
     noisy_action_projector=None,
+    action_scale=None,
+    episode_idx=0,
     initial_state=None,
     log_file=None,
 ):
@@ -313,6 +336,10 @@ def run_episode(
               f"({NUM_ACTIONS_CHUNK}) constant defined in prismatic.vla.constants! For best performance (in terms of "
                "both speed and success rate), we recommend executing the full action chunk.")
     action_queue = deque(maxlen=cfg.num_open_loop_steps)
+
+    # Independent RNG for action-noise injection so noise draws don't perturb the global seeded stream
+    # (`set_seed_everywhere`) that model/env determinism relies on. Mirrors the private-RNG pattern in telemetry.py.
+    noise_rng = np.random.default_rng(cfg.noise_seed + episode_idx) if cfg.noise_mode != "none" else None
 
     # Setup
     t = 0
@@ -363,6 +390,16 @@ def run_episode(
             # Process action
             action = process_action(action, cfg.model_family)
 
+            # Inject action noise, if enabled (see cfg.noise_mode / noise_scale / noise_period / noise_dims). Keyed
+            # off the real (post-warm-up) step count so the injection schedule lines up the same way regardless of
+            # `cfg.num_open_loop_steps` -- only how fast the model gets to react to a corrupted action differs.
+            real_step = t - cfg.num_steps_wait
+            if cfg.noise_mode == "gaussian" or (cfg.noise_mode == "outlier" and real_step % cfg.noise_period == 0):
+                action = apply_action_noise(
+                    action, action_scale, cfg.noise_dims, cfg.noise_scale, noise_rng, cfg.noise_mode
+                )
+                telemetry.note_noisy_step()
+
             # Execute action in environment
             with telemetry.measure("env_step"):
                 obs, reward, done, info = env.step(action.tolist())
@@ -389,6 +426,7 @@ def run_task(
     action_head=None,
     proprio_projector=None,
     noisy_action_projector=None,
+    action_scale=None,
     total_episodes=0,
     total_successes=0,
     log_file=None,
@@ -440,6 +478,8 @@ def run_task(
             action_head,
             proprio_projector,
             noisy_action_projector,
+            action_scale,
+            episode_idx,
             initial_state,
             log_file,
         )
@@ -503,6 +543,13 @@ def eval_libero(cfg: GenerateConfig) -> float:
     # Initialize model and components
     model, action_head, proprio_projector, noisy_action_projector, processor = initialize_model(cfg)
 
+    # Per-dimension action scale (training-data q99 - q01 range), used to size injected noise consistently across
+    # dims of different units (meters vs. radians). Only needed when noise injection is enabled.
+    action_scale = None
+    if cfg.noise_mode != "none":
+        action_stats = model.norm_stats[cfg.unnorm_key]["action"]
+        action_scale = np.array(action_stats["q99"]) - np.array(action_stats["q01"])
+
     # Get expected image dimensions
     resize_size = get_image_resize_size(cfg)
 
@@ -534,6 +581,7 @@ def eval_libero(cfg: GenerateConfig) -> float:
             action_head,
             proprio_projector,
             noisy_action_projector,
+            action_scale,
             total_episodes,
             total_successes,
             log_file,

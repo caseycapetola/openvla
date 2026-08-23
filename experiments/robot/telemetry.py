@@ -39,6 +39,7 @@ EPISODE_COLUMNS = [
     "steps",
     "inference_calls",
     "wait_steps",
+    "noisy_steps",
     "duration_s",
     "control_hz",
     "inference_mean_ms",
@@ -197,6 +198,7 @@ class EvalTelemetry:
 
         self._episode_start: Optional[float] = None
         self._episode_error = ""
+        self._episode_noisy_steps = 0
 
         self._task_episodes, self._task_steps, self._task_inference_calls, self._task_duration_s = 0, 0, 0, 0.0
         self._run_episodes, self._run_steps, self._run_inference_calls, self._run_duration_s = 0, 0, 0, 0.0
@@ -210,10 +212,16 @@ class EvalTelemetry:
     def start_episode(self) -> None:
         self._episode.reset()
         self._episode_error = ""
+        self._episode_noisy_steps = 0
         self._episode_start = time.perf_counter()
 
     def note_error(self, message: str) -> None:
         self._episode_error = message
+
+    def note_noisy_step(self) -> None:
+        """Record that the most recent env step had action noise injected (see `cfg.noise_mode` in the eval loop).
+        Pure counter -- like the rest of this class, it observes what the eval loop did rather than computing it."""
+        self._episode_noisy_steps += 1
 
     @contextlib.contextmanager
     def measure(self, operation: str):
@@ -258,6 +266,7 @@ class EvalTelemetry:
             steps,
             inference_calls,
             wait_steps,
+            self._episode_noisy_steps,
             round(duration_s, 3),
             round(control_hz, 3),
             inference["mean_ms"],

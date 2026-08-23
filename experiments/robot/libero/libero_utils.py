@@ -60,6 +60,41 @@ def save_rollout_video(rollout_images, idx, success, task_description, log_file=
     return mp4_path
 
 
+def apply_action_noise(action, action_scale, dims, scale, rng, mode):
+    """Perturbs the given dims of `action` and returns the corrupted copy, for chunking-vs-per-step noise-robustness
+    experiments (see NOISE_ROBUSTNESS_EXPERIMENT.md).
+
+    `action_scale` is the per-dimension (q99 - q01) training-data range, so `scale` means the same fraction of real
+    action range for every dimension regardless of units (meters for position, radians for rotation).
+
+    Args:
+        action: Raw (unnormalized) action, e.g. from `process_action()`.
+        action_scale: Per-dimension (q99 - q01) range, shape (ACTION_DIM,).
+        dims: Which action dimensions to perturb (list of ints).
+        scale: Noise magnitude, as a fraction of `action_scale`.
+        rng: `np.random.Generator` used for noise draws.
+        mode: "gaussian" (small noise every call) or "outlier" (one large, randomly-signed kick).
+    """
+    if not dims:
+        return action
+
+    action = np.array(action, dtype=np.float64, copy=True)
+    dims = np.asarray(dims)
+    dim_scale = np.asarray(action_scale)[dims]
+
+    if mode == "gaussian":
+        noise = rng.normal(0.0, scale * dim_scale)
+    elif mode == "outlier":
+        sign = rng.choice([-1.0, 1.0], size=len(dims))
+        magnitude = rng.uniform(0.5, 1.5, size=len(dims))
+        noise = sign * magnitude * scale * dim_scale
+    else:
+        raise ValueError(f"Unknown noise mode: {mode}")
+
+    action[dims] += noise
+    return action
+
+
 def quat2axisangle(quat):
     """
     Copied from robosuite: https://github.com/ARISE-Initiative/robosuite/blob/eafb81f54ffc104f905ee48a16bb15f059176ad3/robosuite/utils/transform_utils.py#L490C1-L512C55
