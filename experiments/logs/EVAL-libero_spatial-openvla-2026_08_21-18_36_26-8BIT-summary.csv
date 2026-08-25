@@ -1,11 +1,11 @@
-task_id,task_description,num_episodes,avg_inference_latency_ms,avg_steps,avg_control_hz,success_rate_pct,num_successes
-0,pick up the black bowl between the plate and the ramekin and place it on the plate,50,241.51,77.22,21.71,100.0,50
-1,pick up the black bowl next to the ramekin and place it on the plate,50,239.85,107.26,22.01,100.0,50
-2,pick up the black bowl from table center and place it on the plate,50,239.6,96.24,22.0,100.0,50
-3,pick up the black bowl on the cookie box and place it on the plate,50,239.96,88.56,21.7,96.0,48
-4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,50,239.02,131.92,22.06,94.0,47
-5,pick up the black bowl on the ramekin and place it on the plate,50,242.6,99.9,21.62,94.0,47
-6,pick up the black bowl next to the cookie box and place it on the plate,50,244.38,105.58,21.87,100.0,50
-7,pick up the black bowl on the stove and place it on the plate,50,244.24,120.58,21.55,94.0,47
-8,pick up the black bowl next to the plate and place it on the plate,50,244.96,95.36,21.74,100.0,50
-9,pick up the black bowl on the wooden cabinet and place it on the plate,50,244.24,120.18,21.95,96.0,48
+task_id,task_description,num_episodes,avg_inference_latency_ms,avg_steps,avg_control_hz,success_rate_pct,num_successes,avg_duration_s
+0,pick up the black bowl between the plate and the ramekin and place it on the plate,50,241.51,77.22,21.71,100.0,50,3.558
+1,pick up the black bowl next to the ramekin and place it on the plate,50,239.85,107.26,22.01,100.0,50,4.874
+2,pick up the black bowl from table center and place it on the plate,50,239.6,96.24,22.0,100.0,50,4.375
+3,pick up the black bowl on the cookie box and place it on the plate,50,239.96,88.56,21.7,96.0,48,4.07
+4,pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate,50,239.02,131.92,22.06,94.0,47,5.976
+5,pick up the black bowl on the ramekin and place it on the plate,50,242.6,99.9,21.62,94.0,47,4.609
+6,pick up the black bowl next to the cookie box and place it on the plate,50,244.38,105.58,21.87,100.0,50,4.829
+7,pick up the black bowl on the stove and place it on the plate,50,244.24,120.58,21.55,94.0,47,5.587
+8,pick up the black bowl next to the plate and place it on the plate,50,244.96,95.36,21.74,100.0,50,4.388
+9,pick up the black bowl on the wooden cabinet and place it on the plate,50,244.24,120.18,21.95,96.0,48,5.471

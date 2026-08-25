@@ -316,7 +316,7 @@ def run_episode(
     proprio_projector=None,
     noisy_action_projector=None,
     action_scale=None,
-    episode_idx=0,
+    global_episode_idx=0,
     initial_state=None,
     log_file=None,
 ):
@@ -339,7 +339,10 @@ def run_episode(
 
     # Independent RNG for action-noise injection so noise draws don't perturb the global seeded stream
     # (`set_seed_everywhere`) that model/env determinism relies on. Mirrors the private-RNG pattern in telemetry.py.
-    noise_rng = np.random.default_rng(cfg.noise_seed + episode_idx) if cfg.noise_mode != "none" else None
+    # Seeded off `global_episode_idx` (unique across the whole run, not just within one task) so every episode gets
+    # its own noise draw sequence -- seeding off the per-task trial index would give every task's Nth trial the
+    # identical sequence of noise signs/magnitudes.
+    noise_rng = np.random.default_rng(cfg.noise_seed + global_episode_idx) if cfg.noise_mode != "none" else None
 
     # Setup
     t = 0
@@ -382,7 +385,10 @@ def run_episode(
                         noisy_action_projector=noisy_action_projector,
                         use_film=cfg.use_film,
                     )
-                action_queue.extend(actions)
+                # `deque(maxlen=cfg.num_open_loop_steps)` evicts from the left as items are appended, so extending
+                # with the full chunk would keep only its *last* cfg.num_open_loop_steps actions. Slice to the
+                # first N so we queue (and later execute) the model's nearest-term predictions instead.
+                action_queue.extend(actions[: cfg.num_open_loop_steps])
 
             # Get action from queue
             action = action_queue.popleft()
@@ -479,7 +485,7 @@ def run_task(
             proprio_projector,
             noisy_action_projector,
             action_scale,
-            episode_idx,
+            total_episodes,
             initial_state,
             log_file,
         )
