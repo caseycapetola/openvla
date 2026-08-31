@@ -1,0 +1,1648 @@
+Task suite: libero_goal
+Using default initial states
+
+Task: open the middle drawer of the cabinet
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=1--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 1
+# successes: 1 (100.0%)
+Steps: 124 | Inference calls: 16 | Duration: 9.91s | Control rate: 12.51 Hz | Inference ms mean/p50/p95/p99: 502.3/475.3/586.5/845.7 | Env step ms mean: 8.4 | Image prep ms mean: 5.9
+
+Task: open the middle drawer of the cabinet
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=2--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 2
+# successes: 1 (50.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.50s | Control rate: 13.34 Hz | Inference ms mean/p50/p95/p99: 472.5/472.0/475.0/478.0 | Env step ms mean: 9.6 | Image prep ms mean: 5.2
+
+Task: open the middle drawer of the cabinet
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=3--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 3
+# successes: 1 (33.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.28s | Control rate: 13.47 Hz | Inference ms mean/p50/p95/p99: 473.4/472.9/475.3/476.1 | Env step ms mean: 8.8 | Image prep ms mean: 5.2
+
+Task: open the middle drawer of the cabinet
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=4--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 4
+# successes: 1 (25.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.96s | Control rate: 13.07 Hz | Inference ms mean/p50/p95/p99: 475.0/474.6/476.9/482.4 | Env step ms mean: 10.8 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=5--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 5
+# successes: 2 (40.0%)
+Steps: 119 | Inference calls: 15 | Duration: 8.87s | Control rate: 13.42 Hz | Inference ms mean/p50/p95/p99: 476.4/476.1/478.5/479.8 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=6--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 6
+# successes: 2 (33.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.54s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 475.8/475.6/477.3/479.2 | Env step ms mean: 9.3 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=7--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 7
+# successes: 3 (42.9%)
+Steps: 120 | Inference calls: 15 | Duration: 8.87s | Control rate: 13.52 Hz | Inference ms mean/p50/p95/p99: 477.3/476.8/481.8/484.7 | Env step ms mean: 8.3 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=8--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 8
+# successes: 4 (50.0%)
+Steps: 124 | Inference calls: 16 | Duration: 9.41s | Control rate: 13.18 Hz | Inference ms mean/p50/p95/p99: 477.8/477.3/481.0/481.0 | Env step ms mean: 8.4 | Image prep ms mean: 5.2
+
+Task: open the middle drawer of the cabinet
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=9--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 9
+# successes: 5 (55.6%)
+Steps: 128 | Inference calls: 16 | Duration: 9.47s | Control rate: 13.52 Hz | Inference ms mean/p50/p95/p99: 477.8/478.1/479.5/479.9 | Env step ms mean: 8.3 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=10--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 10
+# successes: 5 (50.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.53s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 477.8/477.5/479.3/482.8 | Env step ms mean: 9.1 | Image prep ms mean: 5.2
+
+Task: open the middle drawer of the cabinet
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=11--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 11
+# successes: 6 (54.5%)
+Steps: 122 | Inference calls: 16 | Duration: 9.41s | Control rate: 12.96 Hz | Inference ms mean/p50/p95/p99: 478.4/478.3/480.1/480.4 | Env step ms mean: 8.5 | Image prep ms mean: 5.2
+
+Task: open the middle drawer of the cabinet
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=12--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 12
+# successes: 7 (58.3%)
+Steps: 109 | Inference calls: 14 | Duration: 8.29s | Control rate: 13.15 Hz | Inference ms mean/p50/p95/p99: 478.5/478.2/480.6/481.1 | Env step ms mean: 8.5 | Image prep ms mean: 5.4
+
+Task: open the middle drawer of the cabinet
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=13--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 13
+# successes: 8 (61.5%)
+Steps: 283 | Inference calls: 36 | Duration: 21.27s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 477.7/477.1/481.9/485.0 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=14--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 14
+# successes: 9 (64.3%)
+Steps: 124 | Inference calls: 16 | Duration: 9.42s | Control rate: 13.17 Hz | Inference ms mean/p50/p95/p99: 477.5/477.3/480.0/481.3 | Env step ms mean: 8.4 | Image prep ms mean: 5.2
+
+Task: open the middle drawer of the cabinet
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=15--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 15
+# successes: 9 (60.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.44s | Control rate: 13.37 Hz | Inference ms mean/p50/p95/p99: 477.4/477.1/478.6/480.8 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=16--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 16
+# successes: 10 (62.5%)
+Steps: 112 | Inference calls: 14 | Duration: 8.32s | Control rate: 13.47 Hz | Inference ms mean/p50/p95/p99: 478.3/477.7/482.1/482.1 | Env step ms mean: 8.4 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=17--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 17
+# successes: 11 (64.7%)
+Steps: 119 | Inference calls: 15 | Duration: 8.90s | Control rate: 13.38 Hz | Inference ms mean/p50/p95/p99: 478.0/477.7/479.5/480.7 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=18--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 18
+# successes: 11 (61.1%)
+Steps: 300 | Inference calls: 38 | Duration: 22.36s | Control rate: 13.42 Hz | Inference ms mean/p50/p95/p99: 477.6/477.5/479.2/480.8 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: open the middle drawer of the cabinet
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=19--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 19
+# successes: 11 (57.9%)
+Steps: 300 | Inference calls: 38 | Duration: 22.53s | Control rate: 13.32 Hz | Inference ms mean/p50/p95/p99: 477.8/477.5/479.6/486.7 | Env step ms mean: 9.1 | Image prep ms mean: 5.2
+
+Task: open the middle drawer of the cabinet
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=20--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 20
+# successes: 11 (55.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.97s | Control rate: 13.06 Hz | Inference ms mean/p50/p95/p99: 478.5/478.0/482.4/485.4 | Env step ms mean: 10.4 | Image prep ms mean: 5.3
+Current task success rate: 0.55
+Current total success rate: 0.55
+Using default initial states
+
+Task: put the bowl on the stove
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=21--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 21
+# successes: 12 (57.1%)
+Steps: 103 | Inference calls: 13 | Duration: 7.74s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 478.5/478.1/481.5/484.8 | Env step ms mean: 8.8 | Image prep ms mean: 5.2
+
+Task: put the bowl on the stove
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=22--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 22
+# successes: 13 (59.1%)
+Steps: 85 | Inference calls: 11 | Duration: 6.50s | Control rate: 13.08 Hz | Inference ms mean/p50/p95/p99: 478.1/477.7/480.1/480.8 | Env step ms mean: 8.4 | Image prep ms mean: 5.2
+
+Task: put the bowl on the stove
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=23--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 23
+# successes: 14 (60.9%)
+Steps: 83 | Inference calls: 11 | Duration: 6.51s | Control rate: 12.74 Hz | Inference ms mean/p50/p95/p99: 478.1/477.7/479.9/481.0 | Env step ms mean: 8.9 | Image prep ms mean: 5.2
+
+Task: put the bowl on the stove
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=24--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 24
+# successes: 15 (62.5%)
+Steps: 83 | Inference calls: 11 | Duration: 6.48s | Control rate: 12.81 Hz | Inference ms mean/p50/p95/p99: 478.2/477.9/480.4/481.4 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=25--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 25
+# successes: 16 (64.0%)
+Steps: 82 | Inference calls: 11 | Duration: 6.48s | Control rate: 12.65 Hz | Inference ms mean/p50/p95/p99: 478.4/477.9/481.7/482.9 | Env step ms mean: 8.5 | Image prep ms mean: 5.4
+
+Task: put the bowl on the stove
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=26--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 26
+# successes: 17 (65.4%)
+Steps: 87 | Inference calls: 11 | Duration: 6.55s | Control rate: 13.28 Hz | Inference ms mean/p50/p95/p99: 478.7/478.9/479.8/480.4 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=27--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 27
+# successes: 18 (66.7%)
+Steps: 86 | Inference calls: 11 | Duration: 6.56s | Control rate: 13.10 Hz | Inference ms mean/p50/p95/p99: 478.9/478.7/481.0/482.0 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=28--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 28
+# successes: 19 (67.9%)
+Steps: 80 | Inference calls: 10 | Duration: 5.98s | Control rate: 13.39 Hz | Inference ms mean/p50/p95/p99: 478.7/478.6/480.1/480.9 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=29--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 29
+# successes: 20 (69.0%)
+Steps: 86 | Inference calls: 11 | Duration: 6.52s | Control rate: 13.18 Hz | Inference ms mean/p50/p95/p99: 478.4/478.2/480.0/480.3 | Env step ms mean: 8.5 | Image prep ms mean: 5.2
+
+Task: put the bowl on the stove
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=30--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 30
+# successes: 21 (70.0%)
+Steps: 87 | Inference calls: 11 | Duration: 6.55s | Control rate: 13.28 Hz | Inference ms mean/p50/p95/p99: 478.8/478.6/480.5/481.6 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=31--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 31
+# successes: 22 (71.0%)
+Steps: 82 | Inference calls: 11 | Duration: 6.48s | Control rate: 12.65 Hz | Inference ms mean/p50/p95/p99: 478.1/477.9/479.5/480.3 | Env step ms mean: 8.7 | Image prep ms mean: 5.2
+
+Task: put the bowl on the stove
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=32--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 32
+# successes: 23 (71.9%)
+Steps: 92 | Inference calls: 12 | Duration: 7.12s | Control rate: 12.92 Hz | Inference ms mean/p50/p95/p99: 479.3/478.7/482.8/484.4 | Env step ms mean: 8.6 | Image prep ms mean: 5.4
+
+Task: put the bowl on the stove
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=33--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 33
+# successes: 24 (72.7%)
+Steps: 88 | Inference calls: 11 | Duration: 6.60s | Control rate: 13.32 Hz | Inference ms mean/p50/p95/p99: 478.8/478.4/480.8/481.7 | Env step ms mean: 9.0 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=34--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 34
+# successes: 25 (73.5%)
+Steps: 85 | Inference calls: 11 | Duration: 6.52s | Control rate: 13.04 Hz | Inference ms mean/p50/p95/p99: 478.3/478.4/480.4/481.8 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=35--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 35
+# successes: 26 (74.3%)
+Steps: 83 | Inference calls: 11 | Duration: 6.49s | Control rate: 12.79 Hz | Inference ms mean/p50/p95/p99: 478.7/478.0/481.3/481.6 | Env step ms mean: 8.5 | Image prep ms mean: 5.2
+
+Task: put the bowl on the stove
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=36--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 36
+# successes: 27 (75.0%)
+Steps: 88 | Inference calls: 11 | Duration: 6.58s | Control rate: 13.37 Hz | Inference ms mean/p50/p95/p99: 478.9/478.3/481.8/482.1 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=37--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 37
+# successes: 28 (75.7%)
+Steps: 89 | Inference calls: 12 | Duration: 7.08s | Control rate: 12.57 Hz | Inference ms mean/p50/p95/p99: 480.1/479.1/485.8/488.8 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=38--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 38
+# successes: 29 (76.3%)
+Steps: 85 | Inference calls: 11 | Duration: 6.54s | Control rate: 13.00 Hz | Inference ms mean/p50/p95/p99: 480.4/479.0/486.1/486.7 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=39--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 39
+# successes: 30 (76.9%)
+Steps: 92 | Inference calls: 12 | Duration: 7.13s | Control rate: 12.91 Hz | Inference ms mean/p50/p95/p99: 479.1/479.0/480.9/482.1 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the bowl on the stove
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=40--success=True--task=put_the_bowl_on_the_stove.mp4
+Success: True
+# episodes completed so far: 40
+# successes: 31 (77.5%)
+Steps: 89 | Inference calls: 12 | Duration: 7.08s | Control rate: 12.57 Hz | Inference ms mean/p50/p95/p99: 478.6/478.2/480.6/481.2 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+Current task success rate: 1.0
+Current total success rate: 0.775
+Using default initial states
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=41--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 41
+# successes: 32 (78.0%)
+Steps: 79 | Inference calls: 10 | Duration: 6.02s | Control rate: 13.13 Hz | Inference ms mean/p50/p95/p99: 479.6/479.5/481.3/481.5 | Env step ms mean: 9.1 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=42--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 42
+# successes: 33 (78.6%)
+Steps: 91 | Inference calls: 12 | Duration: 7.17s | Control rate: 12.68 Hz | Inference ms mean/p50/p95/p99: 479.7/479.4/481.6/482.6 | Env step ms mean: 9.2 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=43--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 43
+# successes: 34 (79.1%)
+Steps: 95 | Inference calls: 12 | Duration: 7.24s | Control rate: 13.12 Hz | Inference ms mean/p50/p95/p99: 481.1/479.4/489.2/489.5 | Env step ms mean: 9.3 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=44--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 44
+# successes: 35 (79.5%)
+Steps: 86 | Inference calls: 11 | Duration: 6.62s | Control rate: 13.00 Hz | Inference ms mean/p50/p95/p99: 478.7/478.4/480.5/481.6 | Env step ms mean: 9.5 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=45--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 45
+# successes: 36 (80.0%)
+Steps: 81 | Inference calls: 11 | Duration: 6.57s | Control rate: 12.34 Hz | Inference ms mean/p50/p95/p99: 479.2/479.0/480.5/481.0 | Env step ms mean: 9.7 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=46--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 46
+# successes: 37 (80.4%)
+Steps: 90 | Inference calls: 12 | Duration: 7.15s | Control rate: 12.59 Hz | Inference ms mean/p50/p95/p99: 478.9/478.6/480.7/481.6 | Env step ms mean: 9.3 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=47--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 47
+# successes: 38 (80.9%)
+Steps: 85 | Inference calls: 11 | Duration: 6.62s | Control rate: 12.85 Hz | Inference ms mean/p50/p95/p99: 481.0/480.3/485.2/487.3 | Env step ms mean: 9.3 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=48--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 48
+# successes: 39 (81.2%)
+Steps: 89 | Inference calls: 12 | Duration: 7.12s | Control rate: 12.50 Hz | Inference ms mean/p50/p95/p99: 479.2/478.9/481.1/482.1 | Env step ms mean: 9.1 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=49--success=False--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 49
+# successes: 39 (79.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.55s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 478.6/478.4/479.9/480.9 | Env step ms mean: 8.9 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=50--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 50
+# successes: 40 (80.0%)
+Steps: 86 | Inference calls: 11 | Duration: 6.63s | Control rate: 12.97 Hz | Inference ms mean/p50/p95/p99: 479.1/478.7/481.3/481.6 | Env step ms mean: 9.5 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=51--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 51
+# successes: 41 (80.4%)
+Steps: 84 | Inference calls: 11 | Duration: 6.61s | Control rate: 12.70 Hz | Inference ms mean/p50/p95/p99: 479.5/479.1/481.5/482.4 | Env step ms mean: 9.6 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=52--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 52
+# successes: 42 (80.8%)
+Steps: 84 | Inference calls: 11 | Duration: 6.66s | Control rate: 12.61 Hz | Inference ms mean/p50/p95/p99: 479.9/479.5/482.3/482.4 | Env step ms mean: 9.8 | Image prep ms mean: 5.7
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=53--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 53
+# successes: 43 (81.1%)
+Steps: 87 | Inference calls: 11 | Duration: 6.72s | Control rate: 12.94 Hz | Inference ms mean/p50/p95/p99: 480.8/480.3/484.6/486.7 | Env step ms mean: 9.6 | Image prep ms mean: 6.0
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=54--success=False--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 54
+# successes: 43 (79.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.48s | Control rate: 13.34 Hz | Inference ms mean/p50/p95/p99: 479.5/479.0/483.9/487.1 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=55--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 55
+# successes: 44 (80.0%)
+Steps: 91 | Inference calls: 12 | Duration: 7.18s | Control rate: 12.67 Hz | Inference ms mean/p50/p95/p99: 479.1/479.0/480.5/480.9 | Env step ms mean: 9.4 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=56--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 56
+# successes: 45 (80.4%)
+Steps: 87 | Inference calls: 11 | Duration: 6.65s | Control rate: 13.08 Hz | Inference ms mean/p50/p95/p99: 479.8/479.9/481.2/481.7 | Env step ms mean: 9.4 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=57--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 57
+# successes: 46 (80.7%)
+Steps: 86 | Inference calls: 11 | Duration: 6.61s | Control rate: 13.00 Hz | Inference ms mean/p50/p95/p99: 479.7/479.2/481.6/482.3 | Env step ms mean: 9.3 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=58--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 58
+# successes: 47 (81.0%)
+Steps: 84 | Inference calls: 11 | Duration: 6.56s | Control rate: 12.80 Hz | Inference ms mean/p50/p95/p99: 480.1/479.6/481.8/482.9 | Env step ms mean: 8.9 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=59--success=False--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 59
+# successes: 47 (79.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.50s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 479.7/479.5/483.3/486.8 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on top of the cabinet
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=60--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 60
+# successes: 48 (80.0%)
+Steps: 85 | Inference calls: 11 | Duration: 6.62s | Control rate: 12.84 Hz | Inference ms mean/p50/p95/p99: 479.0/478.9/480.1/480.6 | Env step ms mean: 9.7 | Image prep ms mean: 5.3
+Current task success rate: 0.85
+Current total success rate: 0.8
+Using default initial states
+
+Task: open the top drawer and put the bowl inside
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=61--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 61
+# successes: 48 (78.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.51s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 478.4/478.3/479.3/480.8 | Env step ms mean: 8.9 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=62--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 62
+# successes: 48 (77.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.60s | Control rate: 13.28 Hz | Inference ms mean/p50/p95/p99: 479.2/478.8/480.8/485.2 | Env step ms mean: 9.1 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=63--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 63
+# successes: 48 (76.2%)
+Steps: 300 | Inference calls: 38 | Duration: 22.40s | Control rate: 13.39 Hz | Inference ms mean/p50/p95/p99: 478.1/477.8/479.9/483.9 | Env step ms mean: 8.6 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=64--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 64
+# successes: 48 (75.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.56s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 479.3/479.1/480.4/482.7 | Env step ms mean: 8.8 | Image prep ms mean: 5.4
+
+Task: open the top drawer and put the bowl inside
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=65--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 65
+# successes: 48 (73.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.58s | Control rate: 13.29 Hz | Inference ms mean/p50/p95/p99: 478.8/478.5/480.5/482.7 | Env step ms mean: 9.1 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=66--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 66
+# successes: 48 (72.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.44s | Control rate: 13.37 Hz | Inference ms mean/p50/p95/p99: 479.2/478.9/480.7/482.4 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: open the top drawer and put the bowl inside
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=67--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 67
+# successes: 48 (71.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.80s | Control rate: 13.16 Hz | Inference ms mean/p50/p95/p99: 479.6/479.5/480.9/483.6 | Env step ms mean: 9.5 | Image prep ms mean: 5.5
+
+Task: open the top drawer and put the bowl inside
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=68--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 68
+# successes: 48 (70.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.55s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 479.9/479.4/483.2/485.0 | Env step ms mean: 8.7 | Image prep ms mean: 5.4
+
+Task: open the top drawer and put the bowl inside
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=69--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 69
+# successes: 48 (69.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.67s | Control rate: 13.23 Hz | Inference ms mean/p50/p95/p99: 480.2/479.5/483.5/491.0 | Env step ms mean: 8.9 | Image prep ms mean: 5.5
+
+Task: open the top drawer and put the bowl inside
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=70--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 70
+# successes: 48 (68.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.54s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 479.6/479.2/481.1/482.5 | Env step ms mean: 8.8 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=71--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 71
+# successes: 48 (67.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.67s | Control rate: 13.23 Hz | Inference ms mean/p50/p95/p99: 480.0/479.6/484.9/486.2 | Env step ms mean: 9.3 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=72--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 72
+# successes: 48 (66.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.62s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 481.1/480.4/486.0/490.8 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: open the top drawer and put the bowl inside
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=73--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 73
+# successes: 48 (65.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.49s | Control rate: 13.34 Hz | Inference ms mean/p50/p95/p99: 479.5/479.0/482.2/487.7 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: open the top drawer and put the bowl inside
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=74--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 74
+# successes: 48 (64.9%)
+Steps: 300 | Inference calls: 38 | Duration: 22.63s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 480.1/479.6/482.4/485.6 | Env step ms mean: 9.1 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=75--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 75
+# successes: 48 (64.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.63s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 480.5/480.6/481.8/482.7 | Env step ms mean: 8.9 | Image prep ms mean: 5.4
+
+Task: open the top drawer and put the bowl inside
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=76--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 76
+# successes: 48 (63.2%)
+Steps: 300 | Inference calls: 38 | Duration: 22.58s | Control rate: 13.28 Hz | Inference ms mean/p50/p95/p99: 479.2/479.1/482.3/483.1 | Env step ms mean: 8.7 | Image prep ms mean: 5.6
+
+Task: open the top drawer and put the bowl inside
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=77--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 77
+# successes: 48 (62.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.46s | Control rate: 13.36 Hz | Inference ms mean/p50/p95/p99: 478.9/478.6/480.1/481.5 | Env step ms mean: 8.7 | Image prep ms mean: 5.2
+
+Task: open the top drawer and put the bowl inside
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=78--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 78
+# successes: 48 (61.5%)
+Steps: 300 | Inference calls: 38 | Duration: 22.55s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 479.8/479.6/481.5/486.4 | Env step ms mean: 8.7 | Image prep ms mean: 5.4
+
+Task: open the top drawer and put the bowl inside
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=79--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 79
+# successes: 48 (60.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.57s | Control rate: 13.29 Hz | Inference ms mean/p50/p95/p99: 480.2/480.1/481.3/481.9 | Env step ms mean: 8.9 | Image prep ms mean: 5.3
+
+Task: open the top drawer and put the bowl inside
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=80--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4
+Success: False
+# episodes completed so far: 80
+# successes: 48 (60.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.45s | Control rate: 13.36 Hz | Inference ms mean/p50/p95/p99: 479.0/478.7/480.8/483.6 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+Current task success rate: 0.0
+Current total success rate: 0.6
+Using default initial states
+
+Task: put the bowl on top of the cabinet
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=81--success=False--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 81
+# successes: 48 (59.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.78s | Control rate: 13.17 Hz | Inference ms mean/p50/p95/p99: 479.3/479.1/480.9/481.9 | Env step ms mean: 9.6 | Image prep ms mean: 5.4
+
+Task: put the bowl on top of the cabinet
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=82--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 82
+# successes: 49 (59.8%)
+Steps: 86 | Inference calls: 11 | Duration: 6.61s | Control rate: 13.01 Hz | Inference ms mean/p50/p95/p99: 479.6/479.9/480.3/480.3 | Env step ms mean: 9.2 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=83--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 83
+# successes: 50 (60.2%)
+Steps: 82 | Inference calls: 11 | Duration: 6.57s | Control rate: 12.48 Hz | Inference ms mean/p50/p95/p99: 480.9/479.6/487.6/492.4 | Env step ms mean: 9.1 | Image prep ms mean: 5.6
+
+Task: put the bowl on top of the cabinet
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=84--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 84
+# successes: 51 (60.7%)
+Steps: 86 | Inference calls: 11 | Duration: 6.57s | Control rate: 13.09 Hz | Inference ms mean/p50/p95/p99: 479.7/479.4/481.5/482.5 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=85--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 85
+# successes: 52 (61.2%)
+Steps: 81 | Inference calls: 11 | Duration: 6.49s | Control rate: 12.49 Hz | Inference ms mean/p50/p95/p99: 479.2/479.0/480.3/480.3 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=86--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 86
+# successes: 53 (61.6%)
+Steps: 78 | Inference calls: 10 | Duration: 5.99s | Control rate: 13.03 Hz | Inference ms mean/p50/p95/p99: 479.7/479.1/481.5/481.8 | Env step ms mean: 8.9 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=87--success=False--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 87
+# successes: 53 (60.9%)
+Steps: 300 | Inference calls: 38 | Duration: 22.46s | Control rate: 13.36 Hz | Inference ms mean/p50/p95/p99: 478.6/478.6/480.0/480.3 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=88--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 88
+# successes: 54 (61.4%)
+Steps: 82 | Inference calls: 11 | Duration: 6.55s | Control rate: 12.52 Hz | Inference ms mean/p50/p95/p99: 479.1/478.8/480.4/480.8 | Env step ms mean: 9.3 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=89--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 89
+# successes: 55 (61.8%)
+Steps: 82 | Inference calls: 11 | Duration: 6.63s | Control rate: 12.36 Hz | Inference ms mean/p50/p95/p99: 480.2/479.6/483.6/485.2 | Env step ms mean: 9.8 | Image prep ms mean: 5.7
+
+Task: put the bowl on top of the cabinet
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=90--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 90
+# successes: 56 (62.2%)
+Steps: 83 | Inference calls: 11 | Duration: 6.57s | Control rate: 12.63 Hz | Inference ms mean/p50/p95/p99: 479.9/480.2/480.9/481.0 | Env step ms mean: 8.9 | Image prep ms mean: 5.7
+
+Task: put the bowl on top of the cabinet
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=91--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 91
+# successes: 57 (62.6%)
+Steps: 85 | Inference calls: 11 | Duration: 6.63s | Control rate: 12.81 Hz | Inference ms mean/p50/p95/p99: 481.3/481.4/483.0/483.2 | Env step ms mean: 8.9 | Image prep ms mean: 5.9
+
+Task: put the bowl on top of the cabinet
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=92--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 92
+# successes: 58 (63.0%)
+Steps: 87 | Inference calls: 11 | Duration: 6.67s | Control rate: 13.04 Hz | Inference ms mean/p50/p95/p99: 480.3/480.1/483.8/485.2 | Env step ms mean: 9.3 | Image prep ms mean: 5.7
+
+Task: put the bowl on top of the cabinet
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=93--success=False--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 93
+# successes: 58 (62.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.51s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 478.9/478.9/480.1/481.0 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=94--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 94
+# successes: 59 (62.8%)
+Steps: 86 | Inference calls: 11 | Duration: 6.58s | Control rate: 13.08 Hz | Inference ms mean/p50/p95/p99: 479.2/479.4/480.2/480.4 | Env step ms mean: 8.9 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=95--success=False--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 95
+# successes: 59 (62.1%)
+Steps: 300 | Inference calls: 38 | Duration: 22.56s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 478.5/478.3/479.8/482.0 | Env step ms mean: 8.9 | Image prep ms mean: 5.4
+
+Task: put the bowl on top of the cabinet
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=96--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 96
+# successes: 60 (62.5%)
+Steps: 82 | Inference calls: 11 | Duration: 6.53s | Control rate: 12.56 Hz | Inference ms mean/p50/p95/p99: 479.7/479.6/480.7/480.9 | Env step ms mean: 8.9 | Image prep ms mean: 5.4
+
+Task: put the bowl on top of the cabinet
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=97--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 97
+# successes: 61 (62.9%)
+Steps: 82 | Inference calls: 11 | Duration: 6.54s | Control rate: 12.53 Hz | Inference ms mean/p50/p95/p99: 480.0/480.0/482.1/483.1 | Env step ms mean: 9.0 | Image prep ms mean: 5.4
+
+Task: put the bowl on top of the cabinet
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=98--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 98
+# successes: 62 (63.3%)
+Steps: 87 | Inference calls: 11 | Duration: 6.61s | Control rate: 13.16 Hz | Inference ms mean/p50/p95/p99: 479.6/479.7/481.0/481.2 | Env step ms mean: 9.1 | Image prep ms mean: 5.3
+
+Task: put the bowl on top of the cabinet
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=99--success=False--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: False
+# episodes completed so far: 99
+# successes: 62 (62.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.63s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 479.2/478.8/482.6/490.0 | Env step ms mean: 8.9 | Image prep ms mean: 5.5
+
+Task: put the bowl on top of the cabinet
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=100--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4
+Success: True
+# episodes completed so far: 100
+# successes: 63 (63.0%)
+Steps: 85 | Inference calls: 11 | Duration: 6.63s | Control rate: 12.82 Hz | Inference ms mean/p50/p95/p99: 482.2/480.5/490.3/493.1 | Env step ms mean: 9.2 | Image prep ms mean: 5.5
+Current task success rate: 0.75
+Current total success rate: 0.63
+Using default initial states
+
+Task: push the plate to the front of the stove
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=101--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 101
+# successes: 63 (62.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.51s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 479.6/479.3/482.1/483.2 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=102--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 102
+# successes: 63 (61.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.55s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 481.2/480.0/489.1/491.0 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=103--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 103
+# successes: 63 (61.2%)
+Steps: 300 | Inference calls: 38 | Duration: 22.49s | Control rate: 13.34 Hz | Inference ms mean/p50/p95/p99: 479.7/479.4/482.1/485.6 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=104--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 104
+# successes: 63 (60.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.45s | Control rate: 13.37 Hz | Inference ms mean/p50/p95/p99: 480.0/479.5/482.8/488.3 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=105--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 105
+# successes: 63 (60.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.50s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 479.7/479.6/481.0/485.0 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=106--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 106
+# successes: 63 (59.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.44s | Control rate: 13.37 Hz | Inference ms mean/p50/p95/p99: 479.7/479.4/482.6/484.3 | Env step ms mean: 8.5 | Image prep ms mean: 5.2
+
+Task: push the plate to the front of the stove
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=107--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 107
+# successes: 63 (58.9%)
+Steps: 300 | Inference calls: 38 | Duration: 22.54s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 480.5/480.2/482.0/485.2 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=108--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 108
+# successes: 63 (58.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.51s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 480.3/479.9/482.5/487.7 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=109--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 109
+# successes: 63 (57.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.59s | Control rate: 13.28 Hz | Inference ms mean/p50/p95/p99: 479.5/479.4/481.5/482.4 | Env step ms mean: 9.0 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=110--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 110
+# successes: 63 (57.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.67s | Control rate: 13.24 Hz | Inference ms mean/p50/p95/p99: 479.9/479.7/481.4/484.2 | Env step ms mean: 9.2 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=111--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 111
+# successes: 63 (56.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.50s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 479.7/479.4/481.3/485.6 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=112--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 112
+# successes: 63 (56.2%)
+Steps: 300 | Inference calls: 38 | Duration: 22.46s | Control rate: 13.36 Hz | Inference ms mean/p50/p95/p99: 479.6/479.2/482.9/484.4 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=113--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 113
+# successes: 63 (55.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.52s | Control rate: 13.32 Hz | Inference ms mean/p50/p95/p99: 479.9/479.5/482.2/485.3 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=114--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 114
+# successes: 63 (55.3%)
+Steps: 300 | Inference calls: 38 | Duration: 23.02s | Control rate: 13.03 Hz | Inference ms mean/p50/p95/p99: 481.1/480.7/483.7/488.7 | Env step ms mean: 9.7 | Image prep ms mean: 5.8
+
+Task: push the plate to the front of the stove
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=115--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 115
+# successes: 63 (54.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.69s | Control rate: 13.22 Hz | Inference ms mean/p50/p95/p99: 480.2/480.3/482.2/482.5 | Env step ms mean: 8.4 | Image prep ms mean: 6.1
+
+Task: push the plate to the front of the stove
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=116--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 116
+# successes: 63 (54.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.54s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 480.3/479.9/484.2/490.7 | Env step ms mean: 8.6 | Image prep ms mean: 5.4
+
+Task: push the plate to the front of the stove
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=117--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 117
+# successes: 63 (53.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.85s | Control rate: 13.13 Hz | Inference ms mean/p50/p95/p99: 480.0/479.7/481.9/483.4 | Env step ms mean: 9.7 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=118--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 118
+# successes: 63 (53.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.67s | Control rate: 13.24 Hz | Inference ms mean/p50/p95/p99: 481.5/480.9/485.5/489.8 | Env step ms mean: 8.6 | Image prep ms mean: 5.7
+
+Task: push the plate to the front of the stove
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=119--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 119
+# successes: 63 (52.9%)
+Steps: 300 | Inference calls: 38 | Duration: 22.66s | Control rate: 13.24 Hz | Inference ms mean/p50/p95/p99: 479.3/479.3/481.0/481.5 | Env step ms mean: 9.2 | Image prep ms mean: 5.3
+
+Task: push the plate to the front of the stove
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=120--success=False--task=push_the_plate_to_the_front_of_the_stove.mp4
+Success: False
+# episodes completed so far: 120
+# successes: 63 (52.5%)
+Steps: 300 | Inference calls: 38 | Duration: 22.45s | Control rate: 13.36 Hz | Inference ms mean/p50/p95/p99: 479.5/478.9/482.6/486.2 | Env step ms mean: 8.6 | Image prep ms mean: 5.2
+Current task success rate: 0.0
+Current total success rate: 0.525
+Using default initial states
+
+Task: put the cream cheese in the bowl
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=121--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 121
+# successes: 63 (52.1%)
+Steps: 300 | Inference calls: 38 | Duration: 22.56s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 480.9/480.5/482.4/492.2 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=122--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 122
+# successes: 63 (51.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.60s | Control rate: 13.27 Hz | Inference ms mean/p50/p95/p99: 480.8/480.4/485.2/486.0 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=123--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 123
+# successes: 63 (51.2%)
+Steps: 300 | Inference calls: 38 | Duration: 22.53s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 480.5/480.0/483.8/489.0 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=124--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 124
+# successes: 63 (50.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.62s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 481.0/480.4/483.1/490.7 | Env step ms mean: 8.8 | Image prep ms mean: 5.4
+
+Task: put the cream cheese in the bowl
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=125--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 125
+# successes: 63 (50.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.56s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 480.5/480.3/482.7/487.5 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=126--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 126
+# successes: 63 (50.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.75s | Control rate: 13.19 Hz | Inference ms mean/p50/p95/p99: 480.6/480.0/481.9/488.7 | Env step ms mean: 9.3 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=127--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 127
+# successes: 63 (49.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.63s | Control rate: 13.25 Hz | Inference ms mean/p50/p95/p99: 480.2/480.2/482.0/482.1 | Env step ms mean: 8.9 | Image prep ms mean: 5.4
+
+Task: put the cream cheese in the bowl
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=128--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 128
+# successes: 63 (49.2%)
+Steps: 300 | Inference calls: 38 | Duration: 22.61s | Control rate: 13.27 Hz | Inference ms mean/p50/p95/p99: 480.5/480.1/482.4/486.8 | Env step ms mean: 8.5 | Image prep ms mean: 5.7
+
+Task: put the cream cheese in the bowl
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=129--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 129
+# successes: 63 (48.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.63s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 480.5/480.3/482.2/482.5 | Env step ms mean: 8.6 | Image prep ms mean: 5.7
+
+Task: put the cream cheese in the bowl
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=130--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 130
+# successes: 63 (48.5%)
+Steps: 300 | Inference calls: 38 | Duration: 22.60s | Control rate: 13.28 Hz | Inference ms mean/p50/p95/p99: 480.9/480.3/485.5/489.8 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=131--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 131
+# successes: 63 (48.1%)
+Steps: 300 | Inference calls: 38 | Duration: 22.80s | Control rate: 13.16 Hz | Inference ms mean/p50/p95/p99: 480.4/480.4/481.7/481.9 | Env step ms mean: 9.1 | Image prep ms mean: 5.7
+
+Task: put the cream cheese in the bowl
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=132--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 132
+# successes: 63 (47.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.68s | Control rate: 13.23 Hz | Inference ms mean/p50/p95/p99: 480.8/480.4/482.4/489.4 | Env step ms mean: 8.9 | Image prep ms mean: 5.5
+
+Task: put the cream cheese in the bowl
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=133--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 133
+# successes: 63 (47.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.65s | Control rate: 13.25 Hz | Inference ms mean/p50/p95/p99: 480.1/479.9/481.9/482.2 | Env step ms mean: 8.9 | Image prep ms mean: 5.4
+
+Task: put the cream cheese in the bowl
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=134--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 134
+# successes: 63 (47.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.52s | Control rate: 13.32 Hz | Inference ms mean/p50/p95/p99: 480.0/479.9/481.4/482.4 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=135--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 135
+# successes: 63 (46.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.63s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 481.0/480.4/484.5/489.3 | Env step ms mean: 8.8 | Image prep ms mean: 5.4
+
+Task: put the cream cheese in the bowl
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=136--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 136
+# successes: 63 (46.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.52s | Control rate: 13.32 Hz | Inference ms mean/p50/p95/p99: 480.2/479.9/481.7/487.6 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=137--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 137
+# successes: 63 (46.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.78s | Control rate: 13.17 Hz | Inference ms mean/p50/p95/p99: 480.4/479.9/482.4/487.8 | Env step ms mean: 9.5 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=138--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 138
+# successes: 63 (45.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.53s | Control rate: 13.32 Hz | Inference ms mean/p50/p95/p99: 480.8/480.6/482.3/487.3 | Env step ms mean: 8.6 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=139--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 139
+# successes: 63 (45.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.57s | Control rate: 13.29 Hz | Inference ms mean/p50/p95/p99: 480.9/480.3/487.0/489.3 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the cream cheese in the bowl
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=140--success=False--task=put_the_cream_cheese_in_the_bowl.mp4
+Success: False
+# episodes completed so far: 140
+# successes: 63 (45.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.63s | Control rate: 13.26 Hz | Inference ms mean/p50/p95/p99: 482.3/480.9/490.8/491.3 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+Current task success rate: 0.0
+Current total success rate: 0.45
+Using default initial states
+
+Task: turn on the stove
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=141--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 141
+# successes: 64 (45.4%)
+Steps: 72 | Inference calls: 9 | Duration: 5.38s | Control rate: 13.39 Hz | Inference ms mean/p50/p95/p99: 479.3/478.6/483.3/485.0 | Env step ms mean: 8.4 | Image prep ms mean: 5.2
+
+Task: turn on the stove
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=142--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 142
+# successes: 65 (45.8%)
+Steps: 74 | Inference calls: 10 | Duration: 5.88s | Control rate: 12.58 Hz | Inference ms mean/p50/p95/p99: 478.5/478.3/480.5/481.0 | Env step ms mean: 8.4 | Image prep ms mean: 5.3
+
+Task: turn on the stove
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=143--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 143
+# successes: 66 (46.2%)
+Steps: 73 | Inference calls: 10 | Duration: 5.87s | Control rate: 12.44 Hz | Inference ms mean/p50/p95/p99: 478.8/478.7/480.9/480.9 | Env step ms mean: 8.4 | Image prep ms mean: 5.2
+
+Task: turn on the stove
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=144--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 144
+# successes: 67 (46.5%)
+Steps: 71 | Inference calls: 9 | Duration: 5.36s | Control rate: 13.25 Hz | Inference ms mean/p50/p95/p99: 478.6/478.4/480.8/481.7 | Env step ms mean: 8.4 | Image prep ms mean: 5.3
+
+Task: turn on the stove
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=145--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 145
+# successes: 68 (46.9%)
+Steps: 130 | Inference calls: 17 | Duration: 10.11s | Control rate: 12.86 Hz | Inference ms mean/p50/p95/p99: 479.0/478.7/483.0/485.3 | Env step ms mean: 8.9 | Image prep ms mean: 5.5
+
+Task: turn on the stove
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=146--success=False--task=turn_on_the_stove.mp4
+Success: False
+# episodes completed so far: 146
+# successes: 68 (46.6%)
+Steps: 300 | Inference calls: 38 | Duration: 22.65s | Control rate: 13.25 Hz | Inference ms mean/p50/p95/p99: 478.3/477.9/480.0/485.4 | Env step ms mean: 9.2 | Image prep ms mean: 5.4
+
+Task: turn on the stove
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=147--success=False--task=turn_on_the_stove.mp4
+Success: False
+# episodes completed so far: 147
+# successes: 68 (46.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.55s | Control rate: 13.31 Hz | Inference ms mean/p50/p95/p99: 477.9/477.8/479.1/480.3 | Env step ms mean: 9.0 | Image prep ms mean: 5.3
+
+Task: turn on the stove
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=148--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 148
+# successes: 69 (46.6%)
+Steps: 74 | Inference calls: 10 | Duration: 5.89s | Control rate: 12.57 Hz | Inference ms mean/p50/p95/p99: 478.3/478.5/480.4/481.2 | Env step ms mean: 8.6 | Image prep ms mean: 5.2
+
+Task: turn on the stove
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=149--success=False--task=turn_on_the_stove.mp4
+Success: False
+# episodes completed so far: 149
+# successes: 69 (46.3%)
+Steps: 300 | Inference calls: 38 | Duration: 22.41s | Control rate: 13.39 Hz | Inference ms mean/p50/p95/p99: 477.3/477.2/479.0/479.2 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: turn on the stove
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=150--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 150
+# successes: 70 (46.7%)
+Steps: 71 | Inference calls: 9 | Duration: 5.37s | Control rate: 13.23 Hz | Inference ms mean/p50/p95/p99: 478.3/478.5/479.4/479.5 | Env step ms mean: 8.5 | Image prep ms mean: 5.3
+
+Task: turn on the stove
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=151--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 151
+# successes: 71 (47.0%)
+Steps: 72 | Inference calls: 9 | Duration: 5.38s | Control rate: 13.37 Hz | Inference ms mean/p50/p95/p99: 479.1/478.9/480.5/480.6 | Env step ms mean: 8.3 | Image prep ms mean: 5.4
+
+Task: turn on the stove
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=152--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 152
+# successes: 72 (47.4%)
+Steps: 75 | Inference calls: 10 | Duration: 5.90s | Control rate: 12.72 Hz | Inference ms mean/p50/p95/p99: 478.6/478.9/479.9/479.9 | Env step ms mean: 8.5 | Image prep ms mean: 5.2
+
+Task: turn on the stove
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=153--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 153
+# successes: 73 (47.7%)
+Steps: 82 | Inference calls: 11 | Duration: 6.49s | Control rate: 12.63 Hz | Inference ms mean/p50/p95/p99: 479.0/478.6/482.6/484.4 | Env step ms mean: 8.5 | Image prep ms mean: 5.4
+
+Task: turn on the stove
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=154--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 154
+# successes: 74 (48.1%)
+Steps: 79 | Inference calls: 10 | Duration: 5.98s | Control rate: 13.22 Hz | Inference ms mean/p50/p95/p99: 478.9/479.0/480.2/480.4 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: turn on the stove
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=155--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 155
+# successes: 75 (48.4%)
+Steps: 78 | Inference calls: 10 | Duration: 5.94s | Control rate: 13.14 Hz | Inference ms mean/p50/p95/p99: 477.7/477.7/478.7/478.8 | Env step ms mean: 8.4 | Image prep ms mean: 5.4
+
+Task: turn on the stove
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=156--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 156
+# successes: 76 (48.7%)
+Steps: 73 | Inference calls: 10 | Duration: 5.91s | Control rate: 12.36 Hz | Inference ms mean/p50/p95/p99: 479.8/478.6/485.0/485.3 | Env step ms mean: 8.6 | Image prep ms mean: 5.5
+
+Task: turn on the stove
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=157--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 157
+# successes: 77 (49.0%)
+Steps: 78 | Inference calls: 10 | Duration: 5.97s | Control rate: 13.06 Hz | Inference ms mean/p50/p95/p99: 479.7/478.6/485.8/489.2 | Env step ms mean: 8.5 | Image prep ms mean: 5.6
+
+Task: turn on the stove
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=158--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 158
+# successes: 78 (49.4%)
+Steps: 73 | Inference calls: 10 | Duration: 5.88s | Control rate: 12.41 Hz | Inference ms mean/p50/p95/p99: 478.9/478.9/480.5/480.8 | Env step ms mean: 8.5 | Image prep ms mean: 5.4
+
+Task: turn on the stove
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=159--success=False--task=turn_on_the_stove.mp4
+Success: False
+# episodes completed so far: 159
+# successes: 78 (49.1%)
+Steps: 300 | Inference calls: 38 | Duration: 22.47s | Control rate: 13.35 Hz | Inference ms mean/p50/p95/p99: 478.7/478.5/481.3/484.8 | Env step ms mean: 8.4 | Image prep ms mean: 5.5
+
+Task: turn on the stove
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=160--success=True--task=turn_on_the_stove.mp4
+Success: True
+# episodes completed so far: 160
+# successes: 79 (49.4%)
+Steps: 84 | Inference calls: 11 | Duration: 6.52s | Control rate: 12.88 Hz | Inference ms mean/p50/p95/p99: 478.3/478.2/480.3/480.6 | Env step ms mean: 8.6 | Image prep ms mean: 5.4
+Current task success rate: 0.8
+Current total success rate: 0.49375
+Using default initial states
+
+Task: put the bowl on the plate
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=161--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 161
+# successes: 80 (49.7%)
+Steps: 71 | Inference calls: 9 | Duration: 5.39s | Control rate: 13.17 Hz | Inference ms mean/p50/p95/p99: 479.5/478.5/484.5/486.8 | Env step ms mean: 8.8 | Image prep ms mean: 5.2
+
+Task: put the bowl on the plate
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=162--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 162
+# successes: 81 (50.0%)
+Steps: 74 | Inference calls: 10 | Duration: 5.92s | Control rate: 12.50 Hz | Inference ms mean/p50/p95/p99: 479.9/478.7/486.7/490.5 | Env step ms mean: 8.7 | Image prep ms mean: 5.4
+
+Task: put the bowl on the plate
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=163--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 163
+# successes: 82 (50.3%)
+Steps: 72 | Inference calls: 9 | Duration: 5.40s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 478.0/477.9/479.7/480.3 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the bowl on the plate
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=164--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 164
+# successes: 83 (50.6%)
+Steps: 70 | Inference calls: 9 | Duration: 5.38s | Control rate: 13.02 Hz | Inference ms mean/p50/p95/p99: 478.3/478.1/479.7/480.1 | Env step ms mean: 8.8 | Image prep ms mean: 5.4
+
+Task: put the bowl on the plate
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=165--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 165
+# successes: 84 (50.9%)
+Steps: 74 | Inference calls: 10 | Duration: 5.92s | Control rate: 12.51 Hz | Inference ms mean/p50/p95/p99: 478.4/478.1/480.0/481.0 | Env step ms mean: 8.6 | Image prep ms mean: 5.6
+
+Task: put the bowl on the plate
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=166--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 166
+# successes: 85 (51.2%)
+Steps: 72 | Inference calls: 9 | Duration: 5.44s | Control rate: 13.23 Hz | Inference ms mean/p50/p95/p99: 479.1/479.1/480.3/480.6 | Env step ms mean: 8.6 | Image prep ms mean: 6.0
+
+Task: put the bowl on the plate
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=167--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 167
+# successes: 86 (51.5%)
+Steps: 67 | Inference calls: 9 | Duration: 5.40s | Control rate: 12.40 Hz | Inference ms mean/p50/p95/p99: 479.0/478.7/481.0/482.0 | Env step ms mean: 8.8 | Image prep ms mean: 6.2
+
+Task: put the bowl on the plate
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=168--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 168
+# successes: 87 (51.8%)
+Steps: 73 | Inference calls: 10 | Duration: 5.94s | Control rate: 12.30 Hz | Inference ms mean/p50/p95/p99: 478.5/478.4/480.5/481.5 | Env step ms mean: 8.8 | Image prep ms mean: 5.8
+
+Task: put the bowl on the plate
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=169--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 169
+# successes: 88 (52.1%)
+Steps: 69 | Inference calls: 9 | Duration: 5.36s | Control rate: 12.87 Hz | Inference ms mean/p50/p95/p99: 478.5/478.2/480.7/481.4 | Env step ms mean: 8.9 | Image prep ms mean: 5.2
+
+Task: put the bowl on the plate
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=170--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 170
+# successes: 89 (52.4%)
+Steps: 71 | Inference calls: 9 | Duration: 5.40s | Control rate: 13.16 Hz | Inference ms mean/p50/p95/p99: 478.0/478.0/479.3/479.7 | Env step ms mean: 8.8 | Image prep ms mean: 5.4
+
+Task: put the bowl on the plate
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=171--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 171
+# successes: 90 (52.6%)
+Steps: 75 | Inference calls: 10 | Duration: 5.91s | Control rate: 12.68 Hz | Inference ms mean/p50/p95/p99: 478.0/477.6/480.1/481.0 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the bowl on the plate
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=172--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 172
+# successes: 91 (52.9%)
+Steps: 69 | Inference calls: 9 | Duration: 5.35s | Control rate: 12.89 Hz | Inference ms mean/p50/p95/p99: 478.6/478.1/481.2/482.2 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the bowl on the plate
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=173--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 173
+# successes: 92 (53.2%)
+Steps: 73 | Inference calls: 10 | Duration: 5.92s | Control rate: 12.33 Hz | Inference ms mean/p50/p95/p99: 478.5/478.4/480.4/480.5 | Env step ms mean: 8.8 | Image prep ms mean: 5.6
+
+Task: put the bowl on the plate
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=174--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 174
+# successes: 93 (53.4%)
+Steps: 73 | Inference calls: 10 | Duration: 5.92s | Control rate: 12.33 Hz | Inference ms mean/p50/p95/p99: 478.6/478.7/480.1/480.5 | Env step ms mean: 8.6 | Image prep ms mean: 5.8
+
+Task: put the bowl on the plate
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=175--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 175
+# successes: 94 (53.7%)
+Steps: 70 | Inference calls: 9 | Duration: 5.42s | Control rate: 12.90 Hz | Inference ms mean/p50/p95/p99: 477.8/477.7/479.6/480.0 | Env step ms mean: 9.3 | Image prep ms mean: 5.5
+
+Task: put the bowl on the plate
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=176--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 176
+# successes: 95 (54.0%)
+Steps: 73 | Inference calls: 10 | Duration: 5.91s | Control rate: 12.35 Hz | Inference ms mean/p50/p95/p99: 477.7/477.8/479.1/479.3 | Env step ms mean: 9.0 | Image prep ms mean: 5.4
+
+Task: put the bowl on the plate
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=177--success=False--task=put_the_bowl_on_the_plate.mp4
+Success: False
+# episodes completed so far: 177
+# successes: 95 (53.7%)
+Steps: 300 | Inference calls: 38 | Duration: 22.43s | Control rate: 13.38 Hz | Inference ms mean/p50/p95/p99: 478.1/477.7/486.0/487.8 | Env step ms mean: 8.5 | Image prep ms mean: 5.4
+
+Task: put the bowl on the plate
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=178--success=False--task=put_the_bowl_on_the_plate.mp4
+Success: False
+# episodes completed so far: 178
+# successes: 95 (53.4%)
+Steps: 300 | Inference calls: 38 | Duration: 22.57s | Control rate: 13.29 Hz | Inference ms mean/p50/p95/p99: 479.2/478.2/486.0/488.3 | Env step ms mean: 8.6 | Image prep ms mean: 5.6
+
+Task: put the bowl on the plate
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=179--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 179
+# successes: 96 (53.6%)
+Steps: 70 | Inference calls: 9 | Duration: 5.38s | Control rate: 13.01 Hz | Inference ms mean/p50/p95/p99: 478.6/478.4/479.9/480.3 | Env step ms mean: 8.8 | Image prep ms mean: 5.4
+
+Task: put the bowl on the plate
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=180--success=True--task=put_the_bowl_on_the_plate.mp4
+Success: True
+# episodes completed so far: 180
+# successes: 97 (53.9%)
+Steps: 72 | Inference calls: 9 | Duration: 5.41s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 478.6/478.7/479.7/479.9 | Env step ms mean: 8.8 | Image prep ms mean: 5.4
+Current task success rate: 0.9
+Current total success rate: 0.5388888888888889
+Using default initial states
+
+Task: put the wine bottle on the rack
+Starting episode 1...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=181--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 181
+# successes: 98 (54.1%)
+Steps: 127 | Inference calls: 16 | Duration: 9.55s | Control rate: 13.29 Hz | Inference ms mean/p50/p95/p99: 479.1/478.5/481.2/483.6 | Env step ms mean: 8.9 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on the rack
+Starting episode 2...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=182--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 182
+# successes: 99 (54.4%)
+Steps: 134 | Inference calls: 17 | Duration: 10.15s | Control rate: 13.21 Hz | Inference ms mean/p50/p95/p99: 478.9/478.8/480.1/480.6 | Env step ms mean: 9.0 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on the rack
+Starting episode 3...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=183--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 183
+# successes: 100 (54.6%)
+Steps: 136 | Inference calls: 17 | Duration: 10.17s | Control rate: 13.37 Hz | Inference ms mean/p50/p95/p99: 479.2/479.5/480.6/482.0 | Env step ms mean: 9.0 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on the rack
+Starting episode 4...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=184--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 184
+# successes: 101 (54.9%)
+Steps: 124 | Inference calls: 16 | Duration: 9.49s | Control rate: 13.07 Hz | Inference ms mean/p50/p95/p99: 478.8/478.5/480.1/481.4 | Env step ms mean: 8.7 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on the rack
+Starting episode 5...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=185--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 185
+# successes: 102 (55.1%)
+Steps: 131 | Inference calls: 17 | Duration: 10.18s | Control rate: 12.87 Hz | Inference ms mean/p50/p95/p99: 480.3/479.4/483.1/489.4 | Env step ms mean: 8.9 | Image prep ms mean: 5.9
+
+Task: put the wine bottle on the rack
+Starting episode 6...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=186--success=False--task=put_the_wine_bottle_on_the_rack.mp4
+Success: False
+# episodes completed so far: 186
+# successes: 102 (54.8%)
+Steps: 300 | Inference calls: 38 | Duration: 22.68s | Control rate: 13.23 Hz | Inference ms mean/p50/p95/p99: 479.0/478.7/480.8/486.6 | Env step ms mean: 9.3 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on the rack
+Starting episode 7...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=187--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 187
+# successes: 103 (55.1%)
+Steps: 126 | Inference calls: 16 | Duration: 9.57s | Control rate: 13.16 Hz | Inference ms mean/p50/p95/p99: 479.4/478.9/481.8/482.1 | Env step ms mean: 8.9 | Image prep ms mean: 5.5
+
+Task: put the wine bottle on the rack
+Starting episode 8...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=188--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 188
+# successes: 104 (55.3%)
+Steps: 124 | Inference calls: 16 | Duration: 9.50s | Control rate: 13.06 Hz | Inference ms mean/p50/p95/p99: 479.5/478.8/482.7/484.6 | Env step ms mean: 8.7 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on the rack
+Starting episode 9...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=189--success=False--task=put_the_wine_bottle_on_the_rack.mp4
+Success: False
+# episodes completed so far: 189
+# successes: 104 (55.0%)
+Steps: 300 | Inference calls: 38 | Duration: 22.51s | Control rate: 13.33 Hz | Inference ms mean/p50/p95/p99: 478.5/478.5/480.3/481.9 | Env step ms mean: 8.7 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on the rack
+Starting episode 10...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=190--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 190
+# successes: 105 (55.3%)
+Steps: 134 | Inference calls: 17 | Duration: 10.18s | Control rate: 13.16 Hz | Inference ms mean/p50/p95/p99: 479.1/479.3/480.9/481.8 | Env step ms mean: 8.8 | Image prep ms mean: 5.7
+
+Task: put the wine bottle on the rack
+Starting episode 11...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=191--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 191
+# successes: 106 (55.5%)
+Steps: 126 | Inference calls: 16 | Duration: 9.55s | Control rate: 13.19 Hz | Inference ms mean/p50/p95/p99: 478.8/478.4/480.7/481.7 | Env step ms mean: 8.9 | Image prep ms mean: 5.5
+
+Task: put the wine bottle on the rack
+Starting episode 12...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=192--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 192
+# successes: 107 (55.7%)
+Steps: 138 | Inference calls: 18 | Duration: 10.69s | Control rate: 12.91 Hz | Inference ms mean/p50/p95/p99: 478.8/478.6/481.4/482.2 | Env step ms mean: 9.0 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on the rack
+Starting episode 13...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=193--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 193
+# successes: 108 (56.0%)
+Steps: 127 | Inference calls: 16 | Duration: 9.52s | Control rate: 13.34 Hz | Inference ms mean/p50/p95/p99: 478.5/478.1/480.2/481.1 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on the rack
+Starting episode 14...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=194--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 194
+# successes: 109 (56.2%)
+Steps: 124 | Inference calls: 16 | Duration: 9.48s | Control rate: 13.08 Hz | Inference ms mean/p50/p95/p99: 478.4/478.0/480.2/481.5 | Env step ms mean: 8.8 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on the rack
+Starting episode 15...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=195--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 195
+# successes: 110 (56.4%)
+Steps: 132 | Inference calls: 17 | Duration: 10.15s | Control rate: 13.00 Hz | Inference ms mean/p50/p95/p99: 480.3/478.9/489.7/489.9 | Env step ms mean: 8.9 | Image prep ms mean: 5.5
+
+Task: put the wine bottle on the rack
+Starting episode 16...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=196--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 196
+# successes: 111 (56.6%)
+Steps: 118 | Inference calls: 15 | Duration: 8.93s | Control rate: 13.22 Hz | Inference ms mean/p50/p95/p99: 478.8/478.8/480.3/480.8 | Env step ms mean: 8.7 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on the rack
+Starting episode 17...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=197--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 197
+# successes: 112 (56.9%)
+Steps: 129 | Inference calls: 17 | Duration: 10.06s | Control rate: 12.83 Hz | Inference ms mean/p50/p95/p99: 479.1/478.7/481.1/483.9 | Env step ms mean: 8.9 | Image prep ms mean: 5.3
+
+Task: put the wine bottle on the rack
+Starting episode 18...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=198--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 198
+# successes: 113 (57.1%)
+Steps: 130 | Inference calls: 17 | Duration: 10.08s | Control rate: 12.89 Hz | Inference ms mean/p50/p95/p99: 479.2/478.7/480.8/480.8 | Env step ms mean: 8.9 | Image prep ms mean: 5.4
+
+Task: put the wine bottle on the rack
+Starting episode 19...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=199--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 199
+# successes: 114 (57.3%)
+Steps: 128 | Inference calls: 16 | Duration: 9.64s | Control rate: 13.28 Hz | Inference ms mean/p50/p95/p99: 479.3/479.1/481.0/482.3 | Env step ms mean: 9.2 | Image prep ms mean: 5.5
+
+Task: put the wine bottle on the rack
+Starting episode 20...
+Saved rollout MP4 at path ./rollouts/2026_08_31/2026_08_31-01_29_35--openvla_oft--episode=200--success=True--task=put_the_wine_bottle_on_the_rack.mp4
+Success: True
+# episodes completed so far: 200
+# successes: 115 (57.5%)
+Steps: 136 | Inference calls: 17 | Duration: 10.23s | Control rate: 13.30 Hz | Inference ms mean/p50/p95/p99: 479.5/479.6/480.7/481.8 | Env step ms mean: 9.1 | Image prep ms mean: 5.6
+Current task success rate: 0.9
+Current total success rate: 0.575
+Final results:
+Total episodes: 200
+Total successes: 115
+Overall success rate: 0.5750 (57.5%)
+
+=== Telemetry summary (run) ===
+Episodes: 200
+Total env steps: 36314
+Total inference calls: 4630
+Mean steps per episode: 181.6
+Total time in timestep loop: 2753.4s
+Mean control rate: 13.19 Hz
+Inference ms mean/p50/p95/p99/max: 479.4/479.2/482.2/488.7/910.4
+Inference first call (warm-up) ms: 910.4
+Env step ms mean/p95: 8.9/10.4
+Image prep ms mean/p95: 5.4/6.1
+
